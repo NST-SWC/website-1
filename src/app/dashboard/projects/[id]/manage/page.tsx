@@ -1,12 +1,22 @@
 "use client";
 
 import { useParams, useRouter } from "next/navigation";
-import { showcaseProjects, projectInterestRequests } from "@/lib/data";
+import { useEffect, useState } from "react";
+import { showcaseProjects } from "@/lib/data";
 import { PageContainer } from "@/components/shared/page-container";
 import { PageIntro } from "@/components/shared/page-intro";
 import { useAuth } from "@/context/auth-context";
 import { Settings, Users, CheckCircle, ExternalLink, ArrowLeft } from "lucide-react";
-import { useState } from "react";
+
+type ProjectInterest = {
+  id: string;
+  projectId: string;
+  userId: string;
+  status: string;
+  createdAt?: any;
+  userName?: string;
+  userEmail?: string;
+};
 
 const ManageProjectPage = () => {
   const params = useParams();
@@ -15,11 +25,33 @@ const ManageProjectPage = () => {
   const projectId = params.id as string;
 
   const project = showcaseProjects.find((p) => p.id === projectId);
-  const pendingRequests = projectInterestRequests.filter(
-    (r) => r.projectId === projectId && r.status === "pending"
-  );
+  const [localRequests, setLocalRequests] = useState<ProjectInterest[]>([]);
+  const [loading, setLoading] = useState(true);
 
-  const [localRequests, setLocalRequests] = useState(pendingRequests);
+  // Fetch project interests from Firestore
+  useEffect(() => {
+    const fetchInterests = async () => {
+      try {
+        const response = await fetch(`/api/project-interests?projectId=${projectId}&status=pending`);
+        const result = await response.json();
+        
+        if (result.ok && result.data) {
+          console.log("✅ Fetched project interests:", result.data);
+          setLocalRequests(result.data);
+        } else {
+          console.warn("⚠️  Failed to fetch interests:", result.message);
+        }
+      } catch (error) {
+        console.error("❌ Error fetching interests:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    if (projectId) {
+      fetchInterests();
+    }
+  }, [projectId]);
 
   if (!project) {
     return (
@@ -57,19 +89,63 @@ const ManageProjectPage = () => {
     );
   }
 
-  const handleApprove = (requestId: string) => {
-    const request = localRequests.find((r) => r.id === requestId);
-    if (request) {
-      alert(`✅ Approved ${request.userName} to join ${project.title}! (Demo mode)`);
-      setLocalRequests((prev) => prev.filter((r) => r.id !== requestId));
+  const handleApprove = async (interestId: string) => {
+    const request = localRequests.find((r) => r.id === interestId);
+    if (!request) return;
+
+    try {
+      const response = await fetch("/api/project-interests", {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          interestId,
+          status: "approved",
+          projectId: request.projectId,
+          userId: request.userId,
+        }),
+      });
+
+      const result = await response.json();
+      
+      if (result.ok) {
+        console.log("✅ Approved request:", interestId);
+        alert(`✅ Approved ${request.userName || request.userId} to join ${project?.title}!`);
+        setLocalRequests((prev) => prev.filter((r) => r.id !== interestId));
+      } else {
+        alert(`Failed to approve: ${result.message}`);
+      }
+    } catch (error) {
+      console.error("❌ Error approving request:", error);
+      alert("Failed to approve request. Please try again.");
     }
   };
 
-  const handleReject = (requestId: string) => {
-    const request = localRequests.find((r) => r.id === requestId);
-    if (request) {
-      alert(`❌ Rejected ${request.userName}'s request (Demo mode)`);
-      setLocalRequests((prev) => prev.filter((r) => r.id !== requestId));
+  const handleReject = async (interestId: string) => {
+    const request = localRequests.find((r) => r.id === interestId);
+    if (!request) return;
+
+    try {
+      const response = await fetch("/api/project-interests", {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          interestId,
+          status: "rejected",
+        }),
+      });
+
+      const result = await response.json();
+      
+      if (result.ok) {
+        console.log("❌ Rejected request:", interestId);
+        alert(`❌ Rejected ${request.userName || request.userId}'s request`);
+        setLocalRequests((prev) => prev.filter((r) => r.id !== interestId));
+      } else {
+        alert(`Failed to reject: ${result.message}`);
+      }
+    } catch (error) {
+      console.error("❌ Error rejecting request:", error);
+      alert("Failed to reject request. Please try again.");
     }
   };
 
@@ -173,10 +249,10 @@ const ManageProjectPage = () => {
                   >
                     <div className="flex items-start justify-between">
                       <div>
-                        <h3 className="text-lg font-semibold">{request.userName}</h3>
-                        <p className="text-sm text-white/60">{request.userEmail}</p>
+                        <h3 className="text-lg font-semibold">{request.userName || request.userId}</h3>
+                        <p className="text-sm text-white/60">{request.userEmail || "No email"}</p>
                         <p className="mt-2 text-xs text-white/50">
-                          Requested on {request.requestedAt}
+                          Requested {request.createdAt ? new Date(request.createdAt.toDate ? request.createdAt.toDate() : request.createdAt).toLocaleDateString() : "recently"}
                         </p>
                       </div>
                     </div>

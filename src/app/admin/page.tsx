@@ -1,3 +1,5 @@
+"use client";
+
 import Link from "next/link";
 import { adminQueue, projectInterestRequests } from "@/lib/data";
 import RequestCard from "@/components/admin/request-card";
@@ -5,7 +7,16 @@ import { PageContainer } from "@/components/shared/page-container";
 import { PageIntro } from "@/components/shared/page-intro";
 import { CheckCircle, Users } from "lucide-react";
 
-const AdminPage = () => (
+const AdminPage = () => {
+  const handleApprove = (requestId: string, userName: string) => {
+    alert(`✅ Approved ${userName}! (Demo mode - not persisted)`);
+  };
+
+  const handleHold = (requestId: string) => {
+    alert("⏸️  On hold (Demo mode)");
+  };
+
+  return (
   <PageContainer>
     <PageIntro
       badge="ADMIN PORTAL"
@@ -59,14 +70,14 @@ const AdminPage = () => (
                 <div className="flex gap-3">
                   <button
                     className="flex-1 rounded-full bg-emerald-400/10 px-4 py-2 text-sm font-medium text-emerald-400 transition hover:bg-emerald-400/20"
-                    onClick={() => alert("✅ Approved! (Demo mode - not persisted)")}
+                    onClick={() => handleApprove(request.id, request.userName)}
                   >
                     <CheckCircle className="inline h-4 w-4 mr-1" />
                     Approve
                   </button>
                   <button
                     className="flex-1 rounded-full border border-white/10 px-4 py-2 text-sm text-white/70 transition hover:bg-white/5"
-                    onClick={() => alert("⏸️  On hold (Demo mode)")}
+                    onClick={() => handleHold(request.id)}
                   >
                     Hold
                   </button>
@@ -113,6 +124,7 @@ const AdminPage = () => (
       Connect Firebase credentials to enable full functionality.
     </div>
   </PageContainer>
-);
+  );
+};
 
 export default AdminPage;
