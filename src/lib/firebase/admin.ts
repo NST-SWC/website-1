@@ -5,19 +5,34 @@ import type { ServiceAccount } from "firebase-admin";
 let adminApp: App | null = null;
 
 const getServiceAccount = (): ServiceAccount | null => {
+  // Debug: Log available environment variables (without sensitive data)
+  console.log("🔍 Environment check:", {
+    hasServiceAccount: !!process.env.FIREBASE_SERVICE_ACCOUNT,
+    hasProjectId: !!process.env.FIREBASE_PROJECT_ID,
+    hasClientEmail: !!process.env.FIREBASE_CLIENT_EMAIL,
+    hasPrivateKey: !!process.env.FIREBASE_PRIVATE_KEY,
+    nodeEnv: process.env.NODE_ENV,
+    vercel: process.env.VERCEL,
+  });
+
   // First, try to get service account from environment variable (JSON string)
   if (process.env.FIREBASE_SERVICE_ACCOUNT) {
     try {
+      console.log("📝 Attempting to parse FIREBASE_SERVICE_ACCOUNT...");
       const parsed = JSON.parse(process.env.FIREBASE_SERVICE_ACCOUNT);
-      console.log("Using FIREBASE_SERVICE_ACCOUNT from environment");
+      console.log("✅ Successfully parsed FIREBASE_SERVICE_ACCOUNT");
+      console.log("📋 Project ID from parsed JSON:", parsed.project_id);
       return {
         projectId: parsed.project_id,
         privateKey: parsed.private_key,
         clientEmail: parsed.client_email,
       } as ServiceAccount;
     } catch (error) {
-      console.error("Failed to parse FIREBASE_SERVICE_ACCOUNT:", error);
+      console.error("❌ Failed to parse FIREBASE_SERVICE_ACCOUNT:", error);
+      console.error("First 100 chars:", process.env.FIREBASE_SERVICE_ACCOUNT?.substring(0, 100));
     }
+  } else {
+    console.warn("⚠️  FIREBASE_SERVICE_ACCOUNT not found in environment");
   }
   
   // Fallback: construct from individual environment variables
@@ -26,7 +41,7 @@ const getServiceAccount = (): ServiceAccount | null => {
   const privateKey = process.env.FIREBASE_PRIVATE_KEY;
   
   if (projectId && clientEmail && privateKey) {
-    console.log("Using individual Firebase environment variables");
+    console.log("✅ Using individual Firebase environment variables");
     return {
       projectId,
       clientEmail,
@@ -35,7 +50,7 @@ const getServiceAccount = (): ServiceAccount | null => {
   }
   
   console.error("❌ No Firebase credentials found in environment variables");
-  console.error("Please set FIREBASE_SERVICE_ACCOUNT or individual variables");
+  console.error("Available env vars:", Object.keys(process.env).filter(k => k.includes('FIREBASE')));
   return null;
 };
 
