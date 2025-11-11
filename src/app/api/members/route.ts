@@ -88,11 +88,15 @@ export async function POST(request: Request) {
         data: { id: id || docRef.id }
       });
     } catch (firestoreError) {
-      console.warn("⚠️  Firestore operation failed:", String(firestoreError));
-      return NextResponse.json({ 
-        ok: true, 
-        message: "Member saved (Demo mode)" 
-      });
+      console.error("❌ Firestore operation failed:", String(firestoreError));
+      return NextResponse.json(
+        { 
+          ok: false, 
+          message: "Failed to save member. Please check your database connection.",
+          error: String(firestoreError)
+        },
+        { status: 500 }
+      );
     }
   } catch (error) {
     console.error("❌ Member operation error:", error);

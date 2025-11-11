@@ -93,7 +93,7 @@ const CreateProjectPage = () => {
 
       if (result.ok) {
         console.log("✅ Project created successfully:", result.data);
-        alert(`🎉 Project "${title}" created successfully!${result.data?.id ? ` (ID: ${result.data.id})` : " (Demo mode)"}`);
+        alert(`🎉 Project "${title}" created successfully!`);
         router.push("/projects");
       } else {
         console.error("❌ Failed to create project:", result);
@@ -232,14 +232,6 @@ const CreateProjectPage = () => {
             </p>
             <p className="mt-1 text-xs text-white/50">
               You will be able to manage members and approve join requests
-            </p>
-          </div>
-
-          {/* Demo Mode Notice */}
-          <div className="rounded-xl border border-sky-400/30 bg-sky-400/5 p-4">
-            <p className="text-sm text-sky-400">
-              💡 <strong>Demo Mode:</strong> Projects are not persisted to the database. 
-              Connect Firebase credentials to enable full functionality.
             </p>
           </div>
 

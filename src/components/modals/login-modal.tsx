@@ -210,17 +210,7 @@ export const LoginModal = ({ open, onClose }: ModalProps) => {
                 <Button onClick={logout} variant="secondary" className="w-full">
                   <LogOut className="h-4 w-4" /> Logout
                 </Button>
-              ) : (
-                <Button
-                  variant="ghost"
-                  className="w-full text-white/70 hover:text-white"
-                  onClick={() =>
-                    setFormState({ username: "member", password: "member123" })
-                  }
-                >
-                  <UserRound className="h-4 w-4" /> Autofill member demo
-                </Button>
-              )}
+              ) : null}
               <Button variant="ghost" className="w-full" onClick={onClose}>
                 Close
               </Button>

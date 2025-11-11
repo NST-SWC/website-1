@@ -211,11 +211,15 @@ export async function PATCH(request: Request) {
         data: { id: interestId, status, deleted: true }
       });
     } catch (firestoreError) {
-      console.warn("⚠️  Firestore update failed:", String(firestoreError));
-      return NextResponse.json({ 
-        ok: true, 
-        message: `Request ${status} (Demo mode)` 
-      });
+      console.error("❌ Firestore update failed:", String(firestoreError));
+      return NextResponse.json(
+        { 
+          ok: false, 
+          message: `Failed to ${status} request. Please check your database connection.`,
+          error: String(firestoreError)
+        },
+        { status: 500 }
+      );
     }
   } catch (error) {
     console.error("❌ Update project interest error:", error);

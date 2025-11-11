@@ -40,12 +40,15 @@ export async function POST(request: Request) {
         data: { id: docRef.id }
       });
     } catch (firestoreError) {
-      console.warn("⚠️  Firestore save failed:", String(firestoreError));
-      console.log("🔄 Running in demo mode - data logged to console");
-      return NextResponse.json({ 
-        ok: true, 
-        message: "Project lead notified. (Demo mode - not persisted)" 
-      });
+      console.error("❌ Firestore save failed:", String(firestoreError));
+      return NextResponse.json(
+        { 
+          ok: false, 
+          message: "Failed to save interest. Please check your database connection.",
+          error: String(firestoreError)
+        },
+        { status: 500 }
+      );
     }
   } catch (error) {
     console.error("❌ project interest error:", error);

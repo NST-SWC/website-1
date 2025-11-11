@@ -17,7 +17,6 @@ export async function POST(request: Request) {
       );
     }
     
-    // Try to save to Firestore, but don't fail if it doesn't work (demo mode)
     try {
       const db = getDb();
       await db.collection("eventRsvps").add({
@@ -28,9 +27,15 @@ export async function POST(request: Request) {
       console.log("✅ Event RSVP saved to Firestore");
       return NextResponse.json({ ok: true, message: "RSVP confirmed." });
     } catch (firestoreError) {
-      console.warn("⚠️  Firestore save failed (demo mode):", String(firestoreError));
-      console.log("✅ Demo mode: Event RSVP logged for:", eventId);
-      return NextResponse.json({ ok: true, message: "RSVP confirmed. (Demo mode)" });
+      console.error("❌ Firestore save failed:", String(firestoreError));
+      return NextResponse.json(
+        { 
+          ok: false, 
+          message: "Failed to save RSVP. Please check your database connection.",
+          error: String(firestoreError)
+        },
+        { status: 500 }
+      );
     }
   } catch (error) {
     console.error("event rsvp error", error);
