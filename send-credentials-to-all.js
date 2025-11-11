@@ -9,7 +9,7 @@ require('dotenv').config({ path: '.env.local' });
 const nodemailer = require('nodemailer');
 
 // We'll use fetch to call the API endpoint instead of direct Firebase access
-const VERCEL_URL = process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000';
+const VERCEL_URL = process.env.NEXT_PUBLIC_APP_URL || 'https://website-drab-ten-27.vercel.app';
 
 // Main script
 
@@ -136,7 +136,7 @@ async function sendCredentialsEmail({ to, name, username, password }) {
           </div>
           
           <div style="text-align: center;">
-            <a href="${process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000'}" class="button">
+            <a href="${process.env.NEXT_PUBLIC_APP_URL || 'https://website-drab-ten-27.vercel.app'}" class="button">
               Login to Dashboard →
             </a>
           </div>
@@ -180,7 +180,7 @@ Here are your login credentials for the CODE 4O4 Dev Club portal:
 Username: ${username}
 Password: ${password}
 
-Login at: ${process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000'}
+Login at: ${process.env.NEXT_PUBLIC_APP_URL || 'https://website-drab-ten-27.vercel.app'}
 
 ⚠️ Security Note: Please keep your credentials secure. We recommend changing your password after logging in.
 

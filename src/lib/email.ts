@@ -148,7 +148,7 @@ export async function sendCredentialsEmail({
             </div>
             
             <div style="text-align: center;">
-              <a href="${process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000"}" class="button">
+              <a href="${process.env.NEXT_PUBLIC_APP_URL || "https://website-drab-ten-27.vercel.app"}" class="button">
                 Login to Dashboard →
               </a>
             </div>
@@ -193,7 +193,7 @@ Your Login Credentials:
 Username: ${username}
 Password: ${password}
 
-Login at: ${process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000"}
+Login at: ${process.env.NEXT_PUBLIC_APP_URL || "https://website-drab-ten-27.vercel.app"}
 
 Please keep your credentials secure and change your password after your first login.
 
