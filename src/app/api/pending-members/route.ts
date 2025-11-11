@@ -94,19 +94,20 @@ export async function PATCH(request: Request) {
       
       username = firstName;
       
-      // Generate unique password using different patterns
-      const patterns = [
-        `${firstName}@123`,
-        `${firstName}!123`,
-        `${firstName}#123`,
-        `${firstName}@${lastName}`,
-        `${firstName}!${lastName}`,
-        `${firstName}_${Math.floor(Math.random() * 1000)}`,
+      // Generate truly random password
+      const randomNum = Math.floor(Math.random() * 9000) + 1000; // 4-digit number (1000-9999)
+      const specialChars = ['@', '!', '#', '$', '&'];
+      const randomSpecial = specialChars[Math.floor(Math.random() * specialChars.length)];
+      
+      // Random pattern selection
+      const patternChoices = [
+        `${firstName}${randomSpecial}${randomNum}`,
+        `${firstName}${randomNum}${randomSpecial}`,
+        `${firstName}_${randomNum}`,
+        `${firstName}${lastName ? lastName.charAt(0).toUpperCase() : ''}${randomNum}`,
       ];
       
-      // Use userId to consistently pick a pattern
-      const patternIndex = userId.charCodeAt(5) % patterns.length;
-      password = patterns[patternIndex] || `${firstName}@123`;
+      password = patternChoices[Math.floor(Math.random() * patternChoices.length)];
       
       // Add to members collection
       await db.collection("members").doc(userId).set({

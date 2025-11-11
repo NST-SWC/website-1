@@ -40,19 +40,20 @@ export async function PATCH(request: Request) {
       const firstName = memberData.name.split(" ")[0].toLowerCase().replace(/[^a-z0-9]/g, "");
       const lastName = memberData.name.split(" ")[1]?.toLowerCase().replace(/[^a-z0-9]/g, "") || "";
       
-      // Create more unique passwords with different patterns
-      const patterns = [
-        `${firstName}@123`,
-        `${firstName}!123`,
-        `${firstName}#123`,
-        `${firstName}@${lastName}`,
-        `${firstName}!${lastName}`,
-        `${firstName}_${Math.floor(Math.random() * 1000)}`,
+      // Generate truly random password
+      const randomNum = Math.floor(Math.random() * 9000) + 1000; // 4-digit number (1000-9999)
+      const specialChars = ['@', '!', '#', '$', '&'];
+      const randomSpecial = specialChars[Math.floor(Math.random() * specialChars.length)];
+      
+      // Random pattern selection
+      const patternChoices = [
+        `${firstName}${randomSpecial}${randomNum}`,
+        `${firstName}${randomNum}${randomSpecial}`,
+        `${firstName}_${randomNum}`,
+        `${firstName}${lastName ? lastName.charAt(0).toUpperCase() : ''}${randomNum}`,
       ];
       
-      // Use the member ID to consistently pick a pattern
-      const patternIndex = memberId.charCodeAt(0) % patterns.length;
-      finalPassword = patterns[patternIndex] || `${firstName}@123`;
+      finalPassword = patternChoices[Math.floor(Math.random() * patternChoices.length)];
     }
 
     // Update the member document

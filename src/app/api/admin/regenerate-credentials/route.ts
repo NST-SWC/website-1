@@ -42,18 +42,20 @@ export async function POST(request: NextRequest) {
       
       const finalUsername = firstName;
 
-      // Generate unique password
-      const patterns = [
-        `${firstName}@123`,
-        `${firstName}!123`,
-        `${firstName}#123`,
-        `${firstName}@${lastName}`,
-        `${firstName}!${lastName}`,
-        `${firstName}_${Math.floor(Math.random() * 1000)}`,
+      // Generate truly random password
+      const randomNum = Math.floor(Math.random() * 9000) + 1000; // 4-digit number (1000-9999)
+      const specialChars = ['@', '!', '#', '$', '&'];
+      const randomSpecial = specialChars[Math.floor(Math.random() * specialChars.length)];
+      
+      // Random pattern selection
+      const patternChoices = [
+        `${firstName}${randomSpecial}${randomNum}`,
+        `${firstName}${randomNum}${randomSpecial}`,
+        `${firstName}_${randomNum}`,
+        `${firstName}${lastName ? lastName.charAt(0).toUpperCase() : ''}${randomNum}`,
       ];
       
-      const patternIndex = memberId.charCodeAt(0) % patterns.length;
-      const finalPassword = patterns[patternIndex] || `${firstName}@123`;
+      const finalPassword = patternChoices[Math.floor(Math.random() * patternChoices.length)];
 
       // Update the member document
       await memberDoc.ref.update({
