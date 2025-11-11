@@ -14,7 +14,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "NSTSWC Dev Club · Build, Learn, Grow",
+  title: "CODE 4O4 Dev Club · Build, Learn, Grow",
   description:
     "An immersive developer club experience powered by Firebase, collaborative projects, live events, and a gamified member portal.",
   metadataBase: new URL("https://devclub.preview"),

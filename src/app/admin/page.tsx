@@ -2,6 +2,8 @@
 
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
+import { useAuth } from "@/context/auth-context";
 import { PageContainer } from "@/components/shared/page-container";
 import { PageIntro } from "@/components/shared/page-intro";
 import { CheckCircle, Users, X } from "lucide-react";
@@ -34,12 +36,26 @@ type PendingMember = {
 };
 
 const AdminPage = () => {
+  const router = useRouter();
+  const { user, isAuthenticated } = useAuth();
   const [projectInterests, setProjectInterests] = useState<ProjectInterest[]>([]);
   const [pendingMembers, setPendingMembers] = useState<PendingMember[]>([]);
   const [loading, setLoading] = useState(true);
   const [activeTab, setActiveTab] = useState<"members" | "projects">("members");
   const [showCredentialsModal, setShowCredentialsModal] = useState(false);
   const [credentials, setCredentials] = useState<{ username: string; password: string; name: string; email: string } | null>(null);
+
+  // Check if user is admin
+  useEffect(() => {
+    if (!isAuthenticated || user?.role !== "admin") {
+      router.push("/");
+    }
+  }, [isAuthenticated, user, router]);
+
+  // Don't render anything if not admin
+  if (!isAuthenticated || user?.role !== "admin") {
+    return null;
+  }
 
   // Fetch pending members
   useEffect(() => {

@@ -12,11 +12,19 @@ const authedLinks = [
   { label: "Events", href: "/events" },
   { label: "Sessions", href: "/sessions" },
   { label: "Leaderboard", href: "/leaderboard" },
+];
+
+const adminLinks = [
   { label: "Admin", href: "/admin" },
 ];
 
 export const PageContainer = ({ children }: { children: ReactNode }) => {
   const { user, isAuthenticated, logout } = useAuth();
+
+  // Show admin links only if user is admin
+  const navigationLinks = isAuthenticated 
+    ? [...authedLinks, ...(user?.role === "admin" ? adminLinks : [])]
+    : [{ label: "Home", href: "/" }];
 
   return (
     <div className="min-h-screen bg-[#010107] text-white">
@@ -27,7 +35,7 @@ export const PageContainer = ({ children }: { children: ReactNode }) => {
             CODE 4O4 Dev Club
           </Link>
           <div className="flex flex-wrap items-center gap-3 text-sm text-white/70">
-            {(isAuthenticated ? authedLinks : [{ label: "Home", href: "/" }]).map(
+            {navigationLinks.map(
               (link) => (
                 <Link
                   key={link.href}
