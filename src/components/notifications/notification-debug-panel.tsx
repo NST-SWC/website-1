@@ -117,7 +117,23 @@ export function NotificationDebugPanel() {
         <div className="mt-3 p-2 bg-blue-500/20 border border-blue-500/30 rounded text-xs text-blue-300">
           <strong>💡 Permission Needed</strong>
           <br />
-          Click "Enable Notifications" in the modal to grant permission.
+          Click the button below to enable notifications.
+          <button
+            onClick={async () => {
+              const permission = await Notification.requestPermission();
+              if (permission === "granted") {
+                new Notification("🎉 Notifications Enabled!", {
+                  body: "You'll now receive updates from CODE 404 Dev Club",
+                  icon: "/icon-192x192.png",
+                });
+                // Refresh checks
+                window.location.reload();
+              }
+            }}
+            className="mt-2 w-full bg-blue-600 hover:bg-blue-700 text-white py-2 px-3 rounded font-medium transition-colors"
+          >
+            Enable Notifications Now
+          </button>
         </div>
       )}
     </div>
