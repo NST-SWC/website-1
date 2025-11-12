@@ -69,7 +69,18 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
         if (typeof window !== "undefined") {
           window.localStorage.setItem(STORAGE_KEY, JSON.stringify(result.user));
           // Set cookie for middleware authentication check
-          document.cookie = `code404-user=${encodeURIComponent(JSON.stringify(result.user))}; path=/; max-age=2592000; SameSite=Lax`;
+          // Use Secure flag in production (HTTPS)
+          const isSecure = window.location.protocol === 'https:';
+          const cookieOptions = [
+            `code404-user=${encodeURIComponent(JSON.stringify(result.user))}`,
+            'path=/',
+            'max-age=2592000',
+            'SameSite=Lax',
+          ];
+          if (isSecure) {
+            cookieOptions.push('Secure');
+          }
+          document.cookie = cookieOptions.join('; ');
         }
         return {
           ok: true,
@@ -108,7 +119,18 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
       // Update localStorage and cookie
       if (typeof window !== "undefined") {
         window.localStorage.setItem(STORAGE_KEY, JSON.stringify(updatedUser));
-        document.cookie = `code404-user=${encodeURIComponent(JSON.stringify(updatedUser))}; path=/; max-age=2592000; SameSite=Lax`;
+        // Use Secure flag in production (HTTPS)
+        const isSecure = window.location.protocol === 'https:';
+        const cookieOptions = [
+          `code404-user=${encodeURIComponent(JSON.stringify(updatedUser))}`,
+          'path=/',
+          'max-age=2592000',
+          'SameSite=Lax',
+        ];
+        if (isSecure) {
+          cookieOptions.push('Secure');
+        }
+        document.cookie = cookieOptions.join('; ');
       }
       
       return updatedUser;
