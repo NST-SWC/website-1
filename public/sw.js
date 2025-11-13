@@ -8,8 +8,10 @@ self.addEventListener('push', (event) => {
     const title = payload.title || 'New notification';
     const options = {
       body: payload.body || undefined,
-      icon: payload.icon || '/icon-192.png',
-      badge: payload.badge || '/icon-72.png',
+      // Use the icons available in public/ (SVG assets); these match manifest entries.
+      // Prefer providing PNGs for best compatibility, but SVG works in most modern browsers.
+      icon: payload.icon || '/icon-192x192.svg',
+      badge: payload.badge || '/icon-72x72.svg',
       data: payload.data || {},
       renotify: payload.renotify || false,
       tag: payload.tag || undefined,

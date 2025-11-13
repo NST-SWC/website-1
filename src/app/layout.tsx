@@ -76,6 +76,10 @@ export default function RootLayout({
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
         <meta name="apple-mobile-web-app-title" content="CODE 4O4" />
+        {/* Make manifest & icons explicit to help installability checks */}
+        <link rel="manifest" href="/manifest.json" />
+        <link rel="apple-touch-icon" href="/icon-192x192.svg" />
+        <meta name="theme-color" content="#06b6d4" />
       </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}

@@ -11,6 +11,36 @@ export default function Navbar() {
   const pathname = usePathname();
   const { user, logout } = useAuth();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  // PWA install prompt handling
+  const [deferredPrompt, setDeferredPrompt] = useState<any>(null);
+  const [canInstall, setCanInstall] = useState(false);
+
+  useEffect(() => {
+    function beforeInstallHandler(e: any) {
+      // Prevent the mini-infobar from appearing on mobile
+      e.preventDefault();
+      setDeferredPrompt(e);
+      setCanInstall(true);
+    }
+    window.addEventListener('beforeinstallprompt', beforeInstallHandler as any);
+    return () => window.removeEventListener('beforeinstallprompt', beforeInstallHandler as any);
+  }, []);
+
+  const promptInstall = async () => {
+    if (!deferredPrompt) return;
+    try {
+      deferredPrompt.prompt();
+      const choice = await deferredPrompt.userChoice;
+      // choice.outcome is 'accepted' or 'dismissed'
+      // hide the install button after choice
+      setDeferredPrompt(null);
+      setCanInstall(false);
+      // You may want to record the outcome in analytics
+      console.log('PWA install choice:', choice?.outcome);
+    } catch (err) {
+      console.warn('Error prompting PWA install', err);
+    }
+  };
 
   // Close mobile menu when route changes
   useEffect(() => {
@@ -85,6 +115,15 @@ export default function Navbar() {
 
         {/* Desktop Right Side */}
         <div className="flex items-center gap-3">
+          {canInstall && (
+            <button
+              onClick={promptInstall}
+              className="flex items-center gap-2 px-3 py-2 rounded-lg bg-cyan-500 text-black font-medium hover:opacity-90 transition-all"
+              aria-label="Install app"
+            >
+              Install
+            </button>
+          )}
           {/* Notification bell removed while notification system is disabled */}
           <button 
             onClick={handleLogout}
