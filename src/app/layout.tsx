@@ -1,9 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import dynamic from 'next/dynamic';
-
-const SwRegister = dynamic(() => import('@/components/sw-register'), { ssr: false });
+import SwRegister from '@/components/sw-register';
 import { AuthProvider } from "@/context/auth-context";
 
 const geistSans = Geist({
