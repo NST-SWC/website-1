@@ -32,7 +32,25 @@ export async function POST(req: Request) {
 
   try {
     const body = await req.json();
-    const payload = body.payload || { title: 'Test', body: 'This is a test notification' };
+    const raw = body.payload || { title: 'Test', body: 'This is a test notification' };
+
+    // Normalize/enrich payload so notifications are visually richer by default.
+    // Admin can override any of these fields by supplying them in the request payload.
+    const payload = {
+      title: raw.title || 'CODE 4O4',
+      body: raw.body || '',
+      icon: raw.icon || '/app-icon-192.png',
+      badge: raw.badge || '/app-icon-72.png',
+      image: raw.image || undefined,
+      // Vibrate pattern (ms) - many Android devices will follow this when allowed in system settings
+      vibrate: raw.vibrate || [200, 100, 200],
+      // tag helps control whether notifications are replaced (same tag) or stacked (unique tag)
+      tag: raw.tag || raw.type || undefined,
+      renotify: raw.renotify !== undefined ? raw.renotify : false,
+      requireInteraction: raw.requireInteraction || false,
+      actions: raw.actions || [],
+      data: raw.data || {},
+    } as any;
 
     const subs = await listAllSubscriptions();
     const results: any[] = [];
