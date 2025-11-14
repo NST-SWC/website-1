@@ -14,6 +14,19 @@ jobs:
       WEBAPP_URL: ${{ secrets.WEBAPP_URL }}
       WEBPUSH_SEND_SECRET: ${{ secrets.WEBPUSH_SEND_SECRET }}
     steps:
+      - name: Validate secrets & reachability
+        run: |
+          if [ -z "${WEBAPP_URL}" ]; then
+            echo "Missing secret: WEBAPP_URL" >&2
+            exit 1
+          fi
+          if [ -z "${WEBPUSH_SEND_SECRET}" ]; then
+            echo "Missing secret: WEBPUSH_SEND_SECRET" >&2
+            exit 1
+          fi
+          echo "Pinging $WEBAPP_URL"
+          curl -sSfI "$WEBAPP_URL" >/dev/null || (echo "Cannot reach WEBAPP_URL" >&2; exit 1)
+
       - name: Call schedule processor
         uses: fjogeleit/http-request-action@v1
         with:
