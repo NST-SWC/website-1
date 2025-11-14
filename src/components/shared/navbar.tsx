@@ -17,6 +17,7 @@ import {
   UserPlus,
 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import NotificationBell from "@/components/notifications/notification-bell";
 
 const baseNavItems = [
   { name: "Dashboard", path: "/dashboard", icon: Home, description: "Home base" },
