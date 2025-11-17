@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import { getDb } from '../../../../lib/firebase/admin';
+import { getDb, serverTimestamp } from '../../../../lib/firebase/admin';
 import { listAllSubscriptions, sendNotificationToSubscription } from '../../../../lib/server/webpush-server';
 
 // Protected by x-webpush-secret header (same as /send)
@@ -47,16 +47,20 @@ export async function POST(req: Request) {
         const payload = data.payload || {};
         const audience = data.audience || 'subscribed';
 
-        let subs = [];
+        let subs: any[] = [];
         if (audience === 'subscribed' || audience === 'all') {
           subs = await listAllSubscriptions();
         }
 
         const perScheduleResults: any[] = [];
+        const userIds = new Set<string>();
         for (const wrapped of subs) {
           // listAllSubscriptions returns { subscription, userId } or raw subscription
           const subscription = wrapped && wrapped.subscription ? wrapped.subscription : wrapped;
           const endpoint = subscription && subscription.endpoint ? subscription.endpoint : null;
+          if (wrapped.userId) {
+            userIds.add(wrapped.userId);
+          }
 
           const r = await sendNotificationToSubscription(subscription, payload);
 
@@ -83,6 +87,23 @@ export async function POST(req: Request) {
           });
           return c;
         });
+
+        if (userIds.size > 0) {
+          const writes = Array.from(userIds).map((userId) =>
+            db.collection('notifications').add({
+              userId,
+              title: payload.title || 'CODE 4O4',
+              body: payload.body || '',
+              icon: payload.icon || '/icon-192x192.png',
+              url: payload.data?.url || payload.url || '/',
+              tag: payload.tag || null,
+              source: payload.tag || payload.type || 'webpush-schedule',
+              read: false,
+              createdAt: serverTimestamp(),
+            }),
+          );
+          await Promise.all(writes);
+        }
 
         await doc.ref.update({ status: 'sent', sentAt: new Date(), results: cleanedResults });
         results.push({ id: doc.id, ok: true, count: cleanedResults.length });

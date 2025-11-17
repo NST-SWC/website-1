@@ -4,6 +4,7 @@ import {
   sendNotificationToSubscription,
   removeSubscriptionByEndpoint,
 } from '../../../../lib/server/webpush-server';
+import { getDb, serverTimestamp } from '../../../../lib/firebase/admin';
 
 function isAdminFromCookie(cookieHeader: string | null) {
   if (!cookieHeader) return false;
@@ -52,10 +53,15 @@ export async function POST(req: Request) {
       data: raw.data || {},
     } as any;
 
+    const db = getDb();
     const subs = await listAllSubscriptions();
+    const notifiedUsers = new Set<string>();
     const results: any[] = [];
     for (const wrapped of subs) {
       const sub = wrapped.subscription || wrapped;
+      if (wrapped.userId) {
+        notifiedUsers.add(wrapped.userId);
+      }
       const r = await sendNotificationToSubscription(sub, payload);
       results.push({ endpoint: sub.endpoint, success: r.success });
       if (!r.success) {
@@ -70,6 +76,32 @@ export async function POST(req: Request) {
         }
       }
     }
+    const notificationPayload = {
+      title: payload.title || 'CODE 4O4',
+      body: payload.body || '',
+      icon: payload.icon || '/icon-192x192.png',
+      url: payload.data?.url || payload.url || '/',
+      tag: payload.tag || null,
+      source: payload.tag || payload.type || 'webpush',
+    };
+
+    const writes = Array.from(notifiedUsers).map((userId) =>
+      db.collection('notifications').add({
+        userId,
+        title: notificationPayload.title,
+        body: notificationPayload.body,
+        icon: notificationPayload.icon,
+        url: notificationPayload.url,
+        tag: notificationPayload.tag,
+        source: notificationPayload.source,
+        read: false,
+        createdAt: serverTimestamp(),
+      }),
+    );
+    if (writes.length) {
+      await Promise.all(writes);
+    }
+
     return NextResponse.json({ results });
   } catch (err) {
     console.error('send POST error', err);
