@@ -72,6 +72,7 @@ export async function PATCH(
       "demoUrl",
       "docsUrl",
       "chatUrl",
+      "latestUpdate",
     ] as const;
     type AllowedField = (typeof allowedFields)[number];
 

@@ -112,7 +112,9 @@ export default function MemberProfileModal({ userId, onClose }: MemberProfileMod
               )}
               <div>
                 <h2 className="text-2xl font-bold">{profile.name}</h2>
-                <p className="text-sm text-white/60">{profile.role || "Club Member"}</p>
+                <p className="text-sm text-white/60">
+                  {profile.specialRole ?? profile.role ?? "Club Member"}
+                </p>
               </div>
             </div>
           </div>

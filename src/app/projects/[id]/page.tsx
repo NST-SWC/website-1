@@ -14,6 +14,7 @@ import {
 
 import { PageContainer } from "@/components/shared/page-container";
 import { PageIntro } from "@/components/shared/page-intro";
+import ProjectUpdateForm from "@/components/projects/project-update-form";
 import { getDb } from "@/lib/firebase/admin";
 import type {
   ClubUser,
@@ -105,9 +106,36 @@ const canManageProject = (project: ProjectRecord, user: ClubUser | null) => {
   const ownerName = project.owner?.toLowerCase();
 
   return (
+    user.role === "admin" ||
     project.ownerId === user.id ||
     (ownerName ? ownerName.startsWith(user.name.toLowerCase()) : false)
   );
+};
+
+const isTeamMember = (
+  members: ProjectMemberRecord[],
+  project: ProjectRecord,
+  user: ClubUser | null,
+) => {
+  if (!user) return false;
+  if (user.role === "admin") return true;
+  if (project.ownerId === user.id) return true;
+
+  const normalize = (value?: string) => value?.toLowerCase().trim();
+  const userEmail = normalize(user.email);
+
+  return members.some((member) => {
+    const memberEmail = normalize(member.userEmail);
+    const hasUserIdMatch =
+      member.id === user.id ||
+      ("userId" in member &&
+        (member as { userId?: string }).userId === user.id);
+
+    const hasEmailMatch =
+      memberEmail && userEmail ? memberEmail === userEmail : false;
+
+    return hasUserIdMatch || hasEmailMatch;
+  });
 };
 
 const toDate = (value?: FirestoreDateValue): Date | null => {
@@ -338,6 +366,8 @@ export default async function ProjectDetailPage({ params }: Params) {
   const { project, members, pendingRequests, activities } = detail;
   const sessionUser = getSessionUser();
   const allowManage = canManageProject(project, sessionUser);
+  const allowUpdates = isTeamMember(members, project, sessionUser);
+  const showRequestAccess = !allowUpdates && project.status !== "completed";
 
   const stack = ensureArray(project.tech);
   const activeMembers = members.filter((member) => (member.role ?? "member") !== "removed");
@@ -352,9 +382,9 @@ export default async function ProjectDetailPage({ params }: Params) {
     (project.status === "completed"
       ? "Project wrapped up. Read the docs for the full case study."
       : `Last sync ${updatedAtLabel?.toLowerCase() ?? "recently"}.`);
-  const teamPreview = activeMembers
-    .sort((a, b) => (toDate(b.joinedAt)?.getTime() ?? 0) - (toDate(a.joinedAt)?.getTime() ?? 0))
-    .slice(0, 4);
+  const teamPreview = activeMembers.sort(
+    (a, b) => (toDate(b.joinedAt)?.getTime() ?? 0) - (toDate(a.joinedAt)?.getTime() ?? 0),
+  );
 
   return (
     <PageContainer>
@@ -371,12 +401,18 @@ export default async function ProjectDetailPage({ params }: Params) {
               <ArrowLeft className="h-4 w-4" />
               Back to projects
             </Link>
-            <Link
-              href="/dashboard"
-              className="rounded-full bg-gradient-to-r from-[#00f5c4] to-[#00c2ff] px-5 py-2 text-sm font-medium text-black transition hover:opacity-90"
-            >
-              Request access
-            </Link>
+            {showRequestAccess ? (
+              <Link
+                href="/dashboard"
+                className="rounded-full bg-gradient-to-r from-[#00f5c4] to-[#00c2ff] px-5 py-2 text-sm font-medium text-black transition hover:opacity-90"
+              >
+                Request access
+              </Link>
+            ) : (
+              <div className="rounded-full border border-white/10 px-5 py-2 text-sm text-white/60">
+                You’re on this squad
+              </div>
+            )}
           </>
         }
       />
@@ -414,7 +450,11 @@ export default async function ProjectDetailPage({ params }: Params) {
               </div>
               <MessageCircle className="h-5 w-5 text-emerald-300" />
             </div>
-            <p className="mt-4 text-sm text-white/70">{latestUpdate}</p>
+            <ProjectUpdateForm
+              projectId={project.id}
+              defaultText={latestUpdate}
+              canEdit={allowUpdates}
+            />
             <div className="mt-6 grid gap-4 md:grid-cols-2">
               <div className="rounded-2xl border border-white/10 bg-white/5 p-5">
                 <p className="text-xs uppercase tracking-[0.3em] text-white/50">
@@ -567,21 +607,49 @@ export default async function ProjectDetailPage({ params }: Params) {
             </div>
           )}
 
-          <div className="rounded-3xl border border-white/10 bg-black/40 p-6">
-            <p className="text-xs uppercase tracking-[0.35em] text-white/50">
-              Next steps
-            </p>
-            <p className="mt-2 text-sm text-white/70">
-              Ready to collaborate? Drop a request and the squad lead will
-              follow-up with onboarding steps.
-            </p>
-            <Link
-              href="/dashboard"
-              className="mt-4 inline-flex w-full items-center justify-center rounded-full bg-gradient-to-r from-[#00f5c4] to-[#00c2ff] px-5 py-2 text-sm font-medium text-black transition hover:opacity-90"
-            >
-              Request to join
-            </Link>
-          </div>
+          {showRequestAccess ? (
+            <div className="rounded-3xl border border-white/10 bg-black/40 p-6">
+              <p className="text-xs uppercase tracking-[0.35em] text-white/50">
+                Next steps
+              </p>
+              <p className="mt-2 text-sm text-white/70">
+                Ready to collaborate? Drop a request and the squad lead will
+                follow-up with onboarding steps.
+              </p>
+              <Link
+                href="/dashboard"
+                className="mt-4 inline-flex w-full items-center justify-center rounded-full bg-gradient-to-r from-[#00f5c4] to-[#00c2ff] px-5 py-2 text-sm font-medium text-black transition hover:opacity-90"
+              >
+                Request to join
+              </Link>
+            </div>
+          ) : (
+            <div className="rounded-3xl border border-white/10 bg-black/40 p-6">
+              <p className="text-xs uppercase tracking-[0.35em] text-white/50">
+                Next steps
+              </p>
+              <p className="mt-2 text-sm text-white/70">
+                You already have access. Check squad chat or the dashboard for tasks.
+              </p>
+              {project.chatUrl ? (
+                <a
+                  href={project.chatUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mt-4 inline-flex w-full items-center justify-center rounded-full bg-gradient-to-r from-[#00f5c4] to-[#00c2ff] px-5 py-2 text-sm font-medium text-black transition hover:opacity-90"
+                >
+                  Open squad chat
+                </a>
+              ) : (
+                <Link
+                  href="/dashboard"
+                  className="mt-4 inline-flex w-full items-center justify-center rounded-full border border-white/15 px-5 py-2 text-sm text-white/80 transition hover:border-emerald-300/60"
+                >
+                  Go to dashboard
+                </Link>
+              )}
+            </div>
+          )}
         </aside>
       </div>
     </PageContainer>

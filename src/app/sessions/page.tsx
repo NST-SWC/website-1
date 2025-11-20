@@ -7,46 +7,6 @@ import { PageIntro } from "@/components/shared/page-intro";
 import { formatDate } from "@/lib/utils";
 import { useAuth } from "@/context/auth-context";
 
-const staticSessionModules = [
-  {
-    id: "html-foundations",
-    title: "HTML Foundations",
-    date: "2025-11-12",
-    weekday: "Wednesday",
-    topics: [
-      "What is HTML & hyper text",
-      "Inline vs block elements",
-      "Semantic tags & table spans",
-      "Fun project briefing (bhailang, dev club site)",
-      "Box model primer",
-    ],
-  },
-  {
-    id: "css-core-01",
-    title: "CSS Core Concepts I",
-    date: "2025-11-14",
-    weekday: "Friday",
-    topics: [
-      "Inline / internal / external CSS",
-      "Structuring styles for club repos",
-      "Linking multiple style sheets",
-      "Hands-on: brand tokens warm-up",
-    ],
-  },
-  {
-    id: "css-core-02",
-    title: "CSS Core Concepts II",
-    date: "2025-11-19",
-    weekday: "Wednesday",
-    topics: [
-      "Classes vs IDs & specificity",
-      "Preference / priority rules",
-      "Creating shapes (circle demo)",
-      "Mini-lab: landing page hero",
-    ],
-  },
-];
-
 const getRelativeTime = (date: Date | null) => {
   if (!date) return "";
   const diff = Date.now() - date.getTime();
@@ -186,50 +146,52 @@ const SessionsPage = () => {
       </div>
     </section>
 
-    <section className="mt-12 space-y-6">
-      <h2 className="text-2xl font-semibold">Session breakdown</h2>
-      <div className="overflow-hidden rounded-3xl border border-white/10 bg-white/5">
-        <table className="w-full border-collapse text-left text-sm text-white/80">
-          <thead className="bg-white/5 text-xs uppercase tracking-[0.3em] text-white/60">
-            <tr>
-              <th className="px-4 py-3">Date</th>
-              <th className="px-4 py-3">Module</th>
-              <th className="px-4 py-3">Topics</th>
-            </tr>
-          </thead>
-          <tbody>
-            {(sessions.length > 0 ? sessions : staticSessionModules).map((item) => {
-              const topics: string[] = Array.isArray(item.topics) && item.topics.length > 0
-                ? item.topics
-                : item.description
-                  ? [item.description]
-                  : ["Live workshop"];
-              const weekdayLabel = item.weekday || formatDate(item.date, { weekday: "long" });
-              return (
-                <tr
-                  key={item.id || `${item.title}-${item.date}`}
-                  className="border-t border-white/10 [&:nth-child(even)]:bg-white/3"
-                >
-                  <td className="px-4 py-4 align-top text-white/60">
-                    {formatDate(item.date, { month: "short", day: "numeric" })}
-                    <br />
-                    <span className="text-xs">{weekdayLabel}</span>
-                  </td>
-                  <td className="px-4 py-4 align-top font-semibold">{item.title}</td>
-                  <td className="px-4 py-4">
-                    <ul className="list-disc pl-5 text-white/70">
-                      {topics.map((topic) => (
-                        <li key={topic}>{topic}</li>
-                      ))}
-                    </ul>
-                  </td>
-                </tr>
-              );
-            })}
-          </tbody>
-        </table>
-      </div>
-    </section>
+    {sessions.length > 0 && (
+      <section className="mt-12 space-y-6">
+        <h2 className="text-2xl font-semibold">Session breakdown</h2>
+        <div className="overflow-hidden rounded-3xl border border-white/10 bg-white/5">
+          <table className="w-full border-collapse text-left text-sm text-white/80">
+            <thead className="bg-white/5 text-xs uppercase tracking-[0.3em] text-white/60">
+              <tr>
+                <th className="px-4 py-3">Date</th>
+                <th className="px-4 py-3">Module</th>
+                <th className="px-4 py-3">Topics</th>
+              </tr>
+            </thead>
+            <tbody>
+              {sessions.map((item) => {
+                const topics: string[] = Array.isArray(item.topics) && item.topics.length > 0
+                  ? item.topics
+                  : item.description
+                    ? [item.description]
+                    : ["Live workshop"];
+                const weekdayLabel = item.weekday || formatDate(item.date, { weekday: "long" });
+                return (
+                  <tr
+                    key={item.id || `${item.title}-${item.date}`}
+                    className="border-t border-white/10 [&:nth-child(even)]:bg-white/3"
+                  >
+                    <td className="px-4 py-4 align-top text-white/60">
+                      {formatDate(item.date, { month: "short", day: "numeric" })}
+                      <br />
+                      <span className="text-xs">{weekdayLabel}</span>
+                    </td>
+                    <td className="px-4 py-4 align-top font-semibold">{item.title}</td>
+                    <td className="px-4 py-4">
+                      <ul className="list-disc pl-5 text-white/70">
+                        {topics.map((topic) => (
+                          <li key={topic}>{topic}</li>
+                        ))}
+                      </ul>
+                    </td>
+                  </tr>
+                );
+              })}
+            </tbody>
+          </table>
+        </div>
+      </section>
+    )}
   </PageContainer>
   );
 };
