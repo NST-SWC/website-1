@@ -21,9 +21,9 @@ const scheduleItems = [
 
 export function Schedule() {
     return (
-        <section id="schedule" className="py-24 bg-black relative">
+        <section id="schedule" className="py-12 md:py-24 bg-black relative">
             <div className="max-w-4xl mx-auto px-4">
-                <div className="text-center mb-16">
+                <div className="text-center mb-8 md:mb-16">
                     <h2 className="text-3xl md:text-5xl font-bold text-white mb-4">Event Schedule</h2>
                     <p className="text-neutral-400">12 hours of intense creation.</p>
                 </div>
@@ -31,9 +31,8 @@ export function Schedule() {
                 <div className="space-y-12">
                     {scheduleItems.map((day, dayIndex) => (
                         <div key={dayIndex} className="relative">
-                            <div className="sticky top-24 z-10 bg-black/80 backdrop-blur-md py-4 mb-8 border-b border-white/10">
-                                <h3 className="text-2xl font-bold text-orange-400">{day.day}</h3>
-                                <p className="text-neutral-500">{day.date}</p>
+                            <div className="sticky top-24 z-10 bg-black/80 backdrop-blur-md py-2 mb-8 border-b border-white/10">
+                                <p className="text-xl md:text-2xl font-bold text-neutral-200">{day.date}</p>
                             </div>
 
                             <div className="space-y-6 relative pl-8 border-l border-white/10 ml-3">

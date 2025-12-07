@@ -8,7 +8,7 @@ export default function AdminWebpushPage() {
   const [title, setTitle] = useState('');
   const [body, setBody] = useState('');
   const [url, setUrl] = useState('');
-  const [icon, setIcon] = useState('/icon-192.png');
+  const [icon, setIcon] = useState('/app-icon-192.png');
   const [sending, setSending] = useState(false);
 
   if (!user || user.role !== 'admin') {
