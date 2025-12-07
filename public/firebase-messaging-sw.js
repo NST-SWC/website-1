@@ -46,8 +46,8 @@ messaging.onBackgroundMessage((payload) => {
   const notificationTitle = payload.notification?.title || 'DevForge';
   const notificationOptions = {
     body: payload.notification?.body || 'You have a new notification',
-    icon: payload.notification?.icon || '/icon-192x192.png',
-    badge: '/badge-72x72.png',
+    icon: payload.notification?.icon || '/app-icon-192.png',
+    badge: '/app-icon-72.png',
     tag: payload.data?.tag || 'notification',
     data: {
       url: payload.data?.url || payload.fcmOptions?.link || '/',
