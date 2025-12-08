@@ -6,7 +6,7 @@ import { collection, getDocs, addDoc, query, orderBy, Timestamp } from "firebase
 import { Loader2, Upload, Download, Search, RefreshCw, Users, User, ShieldCheck, XCircle } from "lucide-react";
 import { motion } from "framer-motion";
 
-const ADMIN_CODE = "devforge2025";
+const ADMIN_CODE = "12345678@";
 
 type Member = {
     name: string;

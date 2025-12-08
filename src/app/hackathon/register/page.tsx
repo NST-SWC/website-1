@@ -117,6 +117,34 @@ export default function RegisterPage() {
                 return; // Stop here so we don't show success
             }
 
+            // Send confirmation email (non-blocking - don't fail registration if email fails)
+            try {
+                const leadMember = data.members[0];
+                const emailResponse = await fetch("/api/hackathon/send-confirmation", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify({
+                        email: leadMember.email,
+                        name: leadMember.name,
+                        type: data.type,
+                        teamName: data.teamName,
+                        memberCount: data.members.length,
+                    }),
+                });
+
+                const emailResult = await emailResponse.json();
+                if (emailResult.success) {
+                    console.log("✅ Confirmation email sent successfully");
+                } else {
+                    console.warn("⚠️ Failed to send confirmation email:", emailResult.error);
+                }
+            } catch (emailError) {
+                console.error("⚠️ Error sending confirmation email (non-blocking):", emailError);
+                // Continue with registration success even if email fails
+            }
+
             // Simulate delay for better UX
             await new Promise((resolve) => setTimeout(resolve, 1000));
             setSubmitted(true);
@@ -141,7 +169,10 @@ export default function RegisterPage() {
                     </div>
                     <h2 className="text-3xl font-bold text-white">You're In!</h2>
                     <p className="text-neutral-400">
-                        Thanks for registering for DevForge. We've sent a confirmation email to your inbox.
+                        Thanks for registering for DevForge. We've sent a confirmation email to your inbox with important next steps.
+                    </p>
+                    <p className="text-sm text-neutral-500 mt-2">
+                        Please check your email (and spam folder) for details about the selection process.
                     </p>
                     <Link
                         href="https://hackathon.code4o4.xyz"
@@ -170,6 +201,14 @@ export default function RegisterPage() {
                     <div className="text-center mb-12">
                         <h1 className="text-4xl md:text-5xl font-bold mb-4">How do you want to participate?</h1>
                         <p className="text-neutral-400 text-lg">Choose your registration type to proceed.</p>
+
+                        <div className="mt-6 max-w-2xl mx-auto px-6 py-4 bg-gradient-to-r from-orange-500/10 via-red-500/10 to-orange-500/10 border border-orange-500/30 rounded-xl backdrop-blur-sm">
+                            <p className="text-orange-300 font-semibold">
+                                ⚡ Only <span className="text-orange-400 font-bold text-lg">50 spots</span> available •
+                                <span className="text-white"> Registrations are selection-based</span> •
+                                <span className="text-orange-400 font-bold"> Register ASAP!</span>
+                            </p>
+                        </div>
                     </div>
 
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
