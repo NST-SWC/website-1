@@ -60,11 +60,11 @@ export function Hero() {
                     animate={{ opacity: 1, scale: 1 }}
                     transition={{ duration: 0.6, delay: 0.2 }}
                 >
-                    <div className="px-6 py-3 bg-gradient-to-r from-orange-500/20 via-red-500/20 to-orange-500/20 border-2 border-orange-500/50 rounded-xl backdrop-blur-sm shadow-lg shadow-orange-500/10">
-                        <p className="text-center text-orange-200 font-bold text-sm md:text-base">
-                            ⚡ Only <span className="text-orange-400 font-black text-lg md:text-xl">20 SLOTS</span> Left •
-                            <span className="text-white"> Selection-Based</span> •
-                            <span className="text-orange-400 font-black"> Register ASAP!</span>
+                    <div className="mt-6 max-w-2xl mx-auto px-6 py-4 bg-gradient-to-r from-orange-500/10 via-red-500/10 to-orange-500/10 border border-orange-500/30 rounded-xl backdrop-blur-sm">
+                        <p className="text-orange-300 font-semibold">
+                            ⚡ Only <span className="text-orange-400 font-bold text-lg">20 SLOTS</span> available •
+                            <span className="text-white"> Registrations are selection-based</span> •
+                            <span className="text-orange-400 font-bold"> Register ASAP!</span>
                         </p>
                     </div>
                 </motion.div>

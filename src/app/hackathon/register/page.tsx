@@ -204,7 +204,7 @@ export default function RegisterPage() {
 
                         <div className="mt-6 max-w-2xl mx-auto px-6 py-4 bg-gradient-to-r from-orange-500/10 via-red-500/10 to-orange-500/10 border border-orange-500/30 rounded-xl backdrop-blur-sm">
                             <p className="text-orange-300 font-semibold">
-                                ⚡ Only <span className="text-orange-400 font-bold text-lg">50 spots</span> available •
+                                ⚡ Only <span className="text-orange-400 font-bold text-lg">20 SLOTS</span> available •
                                 <span className="text-white"> Registrations are selection-based</span> •
                                 <span className="text-orange-400 font-bold"> Register ASAP!</span>
                             </p>

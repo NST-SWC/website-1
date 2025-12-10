@@ -5,16 +5,16 @@ import { motion } from "framer-motion";
 const scheduleItems = [
     {
         day: "Day 1",
-        date: "Saturday, December 20",
+        date: "Saturday, December 20, 2025",
         events: [
-            { time: "07:00 AM", title: "Check-In", description: "Get your team no." },
-            { time: "08:00 AM", title: "Opening Ceremony", description: "Event kickoff and rules." },
-            { time: "09:00 AM", title: "Coding Begins", description: "Start your engines." },
-            { time: "01:00 PM", title: "Lunch Break", description: "Refuel and network." },
-            { time: "02:00 PM", title: "Mid-Evaluation & Mentorship", description: "Check-in with mentors." },
-            { time: "06:00 PM", title: "Final Submission", description: "Upload to Devpost." },
-            { time: "06:30 PM", title: "Demos & Judging", description: "Present your solution." },
-            { time: "07:00 PM", title: "Closing Ceremony & Prize Distribution", description: "Winners announced." },
+            { time: "07:00 AM IST", title: "Check-In", description: "Get your team no." },
+            { time: "08:00 AM IST", title: "Opening Ceremony", description: "Event kickoff and rules." },
+            { time: "09:00 AM IST", title: "Coding Begins", description: "Start your engines." },
+            { time: "01:00 PM IST", title: "Lunch Break", description: "Refuel and network." },
+            { time: "02:00 PM IST", title: "Mid-Evaluation & Mentorship", description: "Check-in with mentors." },
+            { time: "06:00 PM IST", title: "Final Submission", description: "Upload to Devpost." },
+            { time: "06:30 PM IST", title: "Demos & Judging", description: "Present your solution." },
+            { time: "07:00 PM IST", title: "Closing Ceremony & Prize Distribution", description: "Winners announced." },
         ],
     },
 ];
