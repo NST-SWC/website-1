@@ -57,7 +57,7 @@ export default function AdminWebpushPage() {
         <input value={icon} onChange={(e) => setIcon(e.target.value)} placeholder="Icon path" className="w-full rounded p-2 bg-slate-900" />
 
         <div className="flex gap-3">
-          <button onClick={sendNow} disabled={sending} className="rounded bg-emerald-500 px-4 py-2">Send Now</button>
+          <button onClick={sendNow} disabled={sending} className="rounded bg-orange-600 px-4 py-2">Send Now</button>
         </div>
       </div>
     </div>

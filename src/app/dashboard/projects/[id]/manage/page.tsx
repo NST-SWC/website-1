@@ -246,7 +246,7 @@ const ManageProjectPage = () => {
     return (
       <PageContainer>
         <div className="text-center py-12">
-          <div className="inline-block h-8 w-8 animate-spin rounded-full border-4 border-solid border-emerald-400 border-r-transparent"></div>
+          <div className="inline-block h-8 w-8 animate-spin rounded-full border-4 border-solid border-orange-500 border-r-transparent"></div>
           <p className="mt-4 text-white/60">Loading project...</p>
         </div>
       </PageContainer>
@@ -260,7 +260,7 @@ const ManageProjectPage = () => {
           <h1 className="text-2xl font-semibold">Project not found</h1>
           <button
             onClick={() => router.push("/dashboard")}
-            className="mt-4 text-emerald-400 hover:underline"
+            className="mt-4 text-orange-500 hover:underline"
           >
             ← Back to dashboard
           </button>
@@ -280,7 +280,7 @@ const ManageProjectPage = () => {
           </p>
           <button
             onClick={() => router.push("/dashboard")}
-            className="mt-4 text-emerald-400 hover:underline"
+            className="mt-4 text-orange-500 hover:underline"
           >
             ← Back to dashboard
           </button>
@@ -298,7 +298,7 @@ const ManageProjectPage = () => {
         actions={
           <button
             onClick={() => router.push("/dashboard")}
-            className="flex items-center gap-2 rounded-full border border-white/10 px-5 py-2 text-sm text-white/70 transition hover:border-emerald-300/60 hover:text-white"
+            className="flex items-center gap-2 rounded-full border border-white/10 px-5 py-2 text-sm text-white/70 transition hover:border-orange-400/60 hover:text-white"
           >
             <ArrowLeft className="h-4 w-4" />
             Back to dashboard
@@ -313,7 +313,7 @@ const ManageProjectPage = () => {
           <section className="rounded-3xl border border-white/10 bg-black/40 p-6">
             <div className="mb-4 flex items-center justify-between">
               <div className="flex items-center gap-3">
-                <Settings className="h-5 w-5 text-emerald-400" />
+                <Settings className="h-5 w-5 text-orange-500" />
                 <h2 className="text-xl font-semibold">Project Details</h2>
               </div>
               <div className="flex gap-2">
@@ -327,7 +327,7 @@ const ManageProjectPage = () => {
                     </button>
                     <button
                       onClick={handleSaveProject}
-                      className="rounded-full bg-gradient-to-r from-emerald-400 to-emerald-500 px-4 py-2 text-sm font-medium text-black transition hover:opacity-90"
+                      className="rounded-full bg-gradient-to-r from-orange-500 to-orange-600 px-4 py-2 text-sm font-medium text-black transition hover:opacity-90"
                     >
                       Save Changes
                     </button>
@@ -350,7 +350,7 @@ const ManageProjectPage = () => {
                   type="text"
                   value={editedProject?.title || ""}
                   onChange={(e) => setEditedProject({ ...editedProject, title: e.target.value })}
-                  className="mt-1 w-full rounded-xl border border-white/10 bg-white/5 px-4 py-2 text-white outline-none transition focus:border-emerald-400/50 disabled:opacity-50"
+                  className="mt-1 w-full rounded-xl border border-white/10 bg-white/5 px-4 py-2 text-white outline-none transition focus:border-orange-500/50 disabled:opacity-50"
                   disabled={!isEditing}
                 />
               </div>
@@ -361,7 +361,7 @@ const ManageProjectPage = () => {
                   value={editedProject?.description || ""}
                   onChange={(e) => setEditedProject({ ...editedProject, description: e.target.value })}
                   rows={3}
-                  className="mt-1 w-full rounded-xl border border-white/10 bg-white/5 px-4 py-2 text-white outline-none transition focus:border-emerald-400/50 disabled:opacity-50"
+                  className="mt-1 w-full rounded-xl border border-white/10 bg-white/5 px-4 py-2 text-white outline-none transition focus:border-orange-500/50 disabled:opacity-50"
                   disabled={!isEditing}
                 />
               </div>
@@ -385,7 +385,7 @@ const ManageProjectPage = () => {
                 <select
                   value={editedProject?.status || "active"}
                   onChange={(e) => setEditedProject({ ...editedProject, status: e.target.value })}
-                  className="mt-1 w-full rounded-xl border border-white/10 bg-white/5 px-4 py-2 text-white outline-none transition focus:border-emerald-400/50 disabled:opacity-50"
+                  className="mt-1 w-full rounded-xl border border-white/10 bg-white/5 px-4 py-2 text-white outline-none transition focus:border-orange-500/50 disabled:opacity-50"
                   disabled={!isEditing}
                 >
                   <option value="active">Active</option>
@@ -406,9 +406,9 @@ const ManageProjectPage = () => {
           <section className="rounded-3xl border border-white/10 bg-black/40 p-6">
             <div className="mb-4 flex items-center justify-between">
               <div className="flex items-center gap-3">
-                <UserCheck className="h-5 w-5 text-emerald-400" />
+                <UserCheck className="h-5 w-5 text-orange-500" />
                 <h2 className="text-xl font-semibold">Current Members</h2>
-                <span className="rounded-full bg-emerald-400/10 px-3 py-1 text-xs text-emerald-400">
+                <span className="rounded-full bg-orange-500/10 px-3 py-1 text-xs text-orange-500">
                   {members.length} members
                 </span>
               </div>
@@ -433,7 +433,7 @@ const ManageProjectPage = () => {
                           <div className="flex-1">
                             <button
                               onClick={() => setSelectedMemberId(member.userId)}
-                              className="text-left transition hover:text-emerald-400"
+                              className="text-left transition hover:text-orange-500"
                             >
                               <h3 className="font-semibold hover:underline">{member.userName}</h3>
                             </button>
@@ -466,9 +466,9 @@ const ManageProjectPage = () => {
           {/* Join Requests */}
           <section className="rounded-3xl border border-white/10 bg-black/40 p-6">
             <div className="mb-4 flex items-center gap-3">
-              <Users className="h-5 w-5 text-sky-400" />
+              <Users className="h-5 w-5 text-orange-500" />
               <h2 className="text-xl font-semibold">Join Requests</h2>
-              <span className="rounded-full bg-sky-400/10 px-3 py-1 text-xs text-sky-400">
+              <span className="rounded-full bg-orange-500/10 px-3 py-1 text-xs text-orange-500">
                 {localRequests.length} pending
               </span>
             </div>
@@ -484,7 +484,7 @@ const ManageProjectPage = () => {
                       <div className="flex-1">
                         <button
                           onClick={() => setSelectedMemberId(request.userId)}
-                          className="text-left transition hover:text-emerald-400"
+                          className="text-left transition hover:text-orange-500"
                         >
                           <h3 className="text-lg font-semibold hover:underline">{request.userName || request.userId}</h3>
                         </button>
@@ -498,7 +498,7 @@ const ManageProjectPage = () => {
                     <div className="mt-4 flex gap-3">
                       <button
                         onClick={() => handleApprove(request.id, request.projectId, request.userId)}
-                        className="flex flex-1 items-center justify-center gap-2 rounded-full bg-emerald-400/10 px-4 py-2 text-sm font-medium text-emerald-400 transition hover:bg-emerald-400/20"
+                        className="flex flex-1 items-center justify-center gap-2 rounded-full bg-orange-500/10 px-4 py-2 text-sm font-medium text-orange-500 transition hover:bg-orange-500/20"
                       >
                         <CheckCircle className="h-4 w-4" />
                         Approve
@@ -525,7 +525,7 @@ const ManageProjectPage = () => {
         <aside className="space-y-6">
           {/* Quick Stats */}
           <div className="rounded-3xl border border-white/10 bg-black/40 p-6">
-            <h3 className="mb-4 text-sm uppercase tracking-[0.3em] text-emerald-200">
+            <h3 className="mb-4 text-sm uppercase tracking-[0.3em] text-orange-300">
               Quick Stats
             </h3>
             <div className="space-y-3">
@@ -541,7 +541,7 @@ const ManageProjectPage = () => {
               </div>
               <div className="flex items-center justify-between">
                 <span className="text-sm text-white/60">Pending</span>
-                <span className="text-lg font-semibold text-sky-400">
+                <span className="text-lg font-semibold text-orange-500">
                   {localRequests.length}
                 </span>
               </div>
@@ -550,7 +550,7 @@ const ManageProjectPage = () => {
 
           {/* Project Links */}
           <div className="rounded-3xl border border-white/10 bg-black/40 p-6">
-            <h3 className="mb-4 text-sm uppercase tracking-[0.3em] text-emerald-200">
+            <h3 className="mb-4 text-sm uppercase tracking-[0.3em] text-orange-300">
               Project Links
             </h3>
             
@@ -563,7 +563,7 @@ const ManageProjectPage = () => {
                     value={(editedProject as any)?.githubUrl || ""}
                     onChange={(e) => setEditedProject({ ...editedProject, githubUrl: e.target.value })}
                     placeholder="https://github.com/..."
-                    className="w-full rounded-xl border border-white/10 bg-white/5 px-3 py-2 text-sm text-white outline-none transition focus:border-emerald-400/50"
+                    className="w-full rounded-xl border border-white/10 bg-white/5 px-3 py-2 text-sm text-white outline-none transition focus:border-orange-500/50"
                   />
                 </div>
                 <div>
@@ -573,7 +573,7 @@ const ManageProjectPage = () => {
                     value={(editedProject as any)?.demoUrl || ""}
                     onChange={(e) => setEditedProject({ ...editedProject, demoUrl: e.target.value })}
                     placeholder="https://demo.example.com"
-                    className="w-full rounded-xl border border-white/10 bg-white/5 px-3 py-2 text-sm text-white outline-none transition focus:border-emerald-400/50"
+                    className="w-full rounded-xl border border-white/10 bg-white/5 px-3 py-2 text-sm text-white outline-none transition focus:border-orange-500/50"
                   />
                 </div>
                 <div>
@@ -583,7 +583,7 @@ const ManageProjectPage = () => {
                     value={(editedProject as any)?.docsUrl || ""}
                     onChange={(e) => setEditedProject({ ...editedProject, docsUrl: e.target.value })}
                     placeholder="https://docs.example.com"
-                    className="w-full rounded-xl border border-white/10 bg-white/5 px-3 py-2 text-sm text-white outline-none transition focus:border-emerald-400/50"
+                    className="w-full rounded-xl border border-white/10 bg-white/5 px-3 py-2 text-sm text-white outline-none transition focus:border-orange-500/50"
                   />
                 </div>
                 <div>
@@ -593,7 +593,7 @@ const ManageProjectPage = () => {
                     value={(editedProject as any)?.chatUrl || ""}
                     onChange={(e) => setEditedProject({ ...editedProject, chatUrl: e.target.value })}
                     placeholder="https://discord.gg/..."
-                    className="w-full rounded-xl border border-white/10 bg-white/5 px-3 py-2 text-sm text-white outline-none transition focus:border-emerald-400/50"
+                    className="w-full rounded-xl border border-white/10 bg-white/5 px-3 py-2 text-sm text-white outline-none transition focus:border-orange-500/50"
                   />
                   <p className="mt-1 text-[11px] text-white/40">
                     Share your Discord, Slack, or WhatsApp invite link.

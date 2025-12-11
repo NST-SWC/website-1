@@ -250,7 +250,7 @@ export const JoinClubForm = ({
         }}
         className={cn(
           "text-sm",
-          status === "success" ? "text-emerald-300" : "text-red-400",
+          status === "success" ? "text-orange-400" : "text-red-400",
         )}
       >
         {message}

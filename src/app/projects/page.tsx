@@ -133,7 +133,7 @@ const ProjectsPage = () => {
           )}
           <Link
             href="/"
-            className="rounded-full border border-white/10 px-5 py-2 text-sm text-white/70 transition hover:border-emerald-300/60 hover:text-white"
+            className="rounded-full border border-white/10 px-5 py-2 text-sm text-white/70 transition hover:border-orange-400/60 hover:text-white"
           >
             ← Back home
           </Link>
@@ -231,7 +231,7 @@ const ProjectsPage = () => {
                 )}
                 <Link
                   href={`/projects/${project.id}`}
-                  className="rounded-full border border-white/20 px-5 py-2 text-sm text-white/80 transition hover:border-emerald-300/50"
+                  className="rounded-full border border-white/20 px-5 py-2 text-sm text-white/80 transition hover:border-orange-400/50"
                 >
                   View details
                 </Link>

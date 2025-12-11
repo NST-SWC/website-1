@@ -3,14 +3,14 @@
 :root {
   color-scheme: dark;
   --bg-primary: #010107;
-  --bg-secondary: #050b1a;
-  --bg-card: rgba(8, 14, 32, 0.8);
+  --bg-secondary: #0a0506;
+  --bg-card: rgba(20, 8, 8, 0.8);
   --text-primary: #f8fafc;
   --text-muted: #94a3b8;
-  --accent: #00f5c4;
-  --accent-strong: #00c2ff;
-  --border-glow: rgba(0, 229, 175, 0.45);
-  --shadow-glow: 0 0 30px rgba(0, 204, 255, 0.25);
+  --accent: #f97316;
+  --accent-strong: #ea580c;
+  --border-glow: rgba(249, 115, 22, 0.45);
+  --shadow-glow: 0 0 30px rgba(249, 115, 22, 0.25);
   --radius-xl: 32px;
   --font-geist-sans: "Inter", "SF Pro Display", "Segoe UI", system-ui,
     -apple-system, BlinkMacSystemFont, sans-serif;
@@ -37,20 +37,20 @@ body {
     "Segoe UI", sans-serif;
   background-image: radial-gradient(
       circle at 30% 20%,
-      rgba(0, 245, 196, 0.15),
+      rgba(249, 115, 22, 0.15),
       transparent 40%
     ),
     radial-gradient(
       circle at 70% 0%,
-      rgba(0, 194, 255, 0.18),
+      rgba(234, 88, 12, 0.18),
       transparent 45%
     ),
     radial-gradient(
       circle at 50% 80%,
-      rgba(0, 255, 150, 0.12),
+      rgba(251, 146, 60, 0.12),
       transparent 35%
     ),
-    linear-gradient(135deg, #05060d 0%, #02010a 60%, #050b1a 100%);
+    linear-gradient(135deg, #05060d 0%, #0a0203 60%, #0a0506 100%);
   background-attachment: fixed;
 }
 
@@ -58,7 +58,7 @@ body::before {
   content: "";
   position: fixed;
   inset: 0;
-  background-image: url("data:image/svg+xml,%3Csvg width='1440' height='900' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%2300f5c4' fill-opacity='0.06'%3E%3Crect width='1' height='1'/%3E%3C/g%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg width='1440' height='900' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23f97316' fill-opacity='0.06'%3E%3Crect width='1' height='1'/%3E%3C/g%3E%3C/svg%3E");
   mask-image: radial-gradient(circle at center, rgba(0, 0, 0, 0.5), transparent 70%);
   pointer-events: none;
   z-index: -1;
@@ -73,25 +73,25 @@ body::before {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(180deg, #00f5c4 0%, #00c2ff 100%);
+  background: linear-gradient(180deg, #f97316 0%, #ea580c 100%);
   border-radius: 999px;
 }
 
 ::selection {
-  background: rgba(0, 245, 196, 0.25);
-  color: #e8fff6;
+  background: rgba(249, 115, 22, 0.25);
+  color: #fff5ed;
 }
 
 .glow-border {
   border: 1px solid rgba(255, 255, 255, 0.08);
   background: radial-gradient(
       circle at 0% 0%,
-      rgba(0, 245, 196, 0.12),
+      rgba(249, 115, 22, 0.12),
       transparent 45%
     ),
-    rgba(8, 14, 32, 0.8);
+    rgba(20, 8, 8, 0.8);
   box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.03),
-    0 15px 40px rgba(4, 12, 24, 0.8);
+    0 15px 40px rgba(12, 4, 4, 0.8);
   border-radius: var(--radius-xl);
   backdrop-filter: blur(28px);
 }
@@ -109,7 +109,7 @@ body::before {
 .glass-panel {
   border-radius: 24px;
   border: 1px solid rgba(255, 255, 255, 0.07);
-  background: rgba(3, 8, 20, 0.85);
-  box-shadow: 0 15px 45px rgba(2, 8, 20, 0.7);
+  background: rgba(20, 3, 3, 0.85);
+  box-shadow: 0 15px 45px rgba(20, 2, 2, 0.7);
   backdrop-filter: blur(18px);
 }

@@ -88,7 +88,7 @@ const Hero = ({
       transition={{ duration: 0.8 }}
       className="space-y-8"
     >
-      <span className="inline-flex items-center gap-2 rounded-full border border-emerald-400/30 px-4 py-1 text-xs uppercase tracking-[0.3em] text-emerald-200">
+      <span className="inline-flex items-center gap-2 rounded-full border border-orange-500/30 px-4 py-1 text-xs uppercase tracking-[0.3em] text-orange-300">
         ⚡ Future of Dev Learning
       </span>
       <div>
@@ -114,7 +114,7 @@ const Hero = ({
             </Link>
             <Link
               href="/projects"
-              className="inline-flex items-center gap-2 rounded-full border border-white/15 px-5 py-2 text-base text-white/80 transition hover:border-emerald-300 hover:text-white"
+              className="inline-flex items-center gap-2 rounded-full border border-white/15 px-5 py-2 text-base text-white/80 transition hover:border-orange-400 hover:text-white"
             >
               View Projects
             </Link>
@@ -133,7 +133,7 @@ const Hero = ({
           href="/projects"
           className="flex items-center gap-2 text-sm text-white/60 transition hover:text-white"
         >
-          <Sparkles className="h-4 w-4 text-emerald-300" />
+          <Sparkles className="h-4 w-4 text-orange-400" />
           Explore live builds
         </Link>
       </div>
@@ -157,7 +157,7 @@ const StatsRow = () => (
 const FeatureGrid = () => (
   <section className="mt-16 space-y-6">
     <div>
-      <p className="text-sm uppercase tracking-[0.3em] text-emerald-200">
+      <p className="text-sm uppercase tracking-[0.3em] text-orange-300">
         Why join
       </p>
       <h2 className="mt-2 text-3xl font-semibold">Designed for builders</h2>
@@ -175,14 +175,14 @@ const FeatureGrid = () => (
               <div className="matrix-grid h-full" />
             </div>
             <div className="relative space-y-4">
-              <IconComponent className="h-10 w-10 text-emerald-300" />
+              <IconComponent className="h-10 w-10 text-orange-400" />
               <div>
                 <h3 className="text-2xl font-semibold">{feature.title}</h3>
                 <p className="mt-2 text-sm text-white/70">
                   {feature.description}
                 </p>
               </div>
-              <p className="text-sm text-emerald-200">{feature.highlight}</p>
+              <p className="text-sm text-orange-300">{feature.highlight}</p>
             </div>
           </div>
         );
@@ -210,7 +210,7 @@ const FeatureGrid = () => (
 const JourneySection = () => (
   <section className="mt-16 rounded-3xl border border-white/10 bg-white/5 p-8">
     <div>
-      <p className="text-sm uppercase tracking-[0.3em] text-emerald-200">
+      <p className="text-sm uppercase tracking-[0.3em] text-orange-300">
         Member journey
       </p>
       <h2 className="mt-2 text-3xl font-semibold">How the flow works</h2>
@@ -228,7 +228,7 @@ const JourneySection = () => (
           <ul className="mt-4 space-y-2 text-sm text-white/60">
             {step.micro.map((item) => (
               <li key={item} className="flex items-center gap-2">
-                <span className="h-1 w-1 rounded-full bg-emerald-300" />
+                <span className="h-1 w-1 rounded-full bg-orange-400" />
                 {item}
               </li>
             ))}

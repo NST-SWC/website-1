@@ -34,12 +34,10 @@ export default function AdminPage() {
     const [importing, setImporting] = useState(false);
     const [configError, setConfigError] = useState<string | null>(null);
 
+    // Auto-logout on refresh - no persistent authentication
     useEffect(() => {
-        const cached = localStorage.getItem("devforge_admin_access");
-        if (cached === "true") {
-            setAccessGranted(true);
-            fetchData();
-        }
+        // Clear any cached authentication on mount
+        localStorage.removeItem("devforge_admin_access");
     }, []);
 
     const verifyAccess = async () => {
@@ -54,7 +52,6 @@ export default function AdminPage() {
 
             if (result.success) {
                 setAccessGranted(true);
-                localStorage.setItem("devforge_admin_access", "true");
                 fetchData();
             } else {
                 alert("Invalid Access Code");
@@ -314,7 +311,7 @@ export default function AdminPage() {
                                     .map((reg) => (
                                         <tr key={reg.id} className="hover:bg-neutral-800/30 transition-colors">
                                             <td className="p-4">
-                                                <span className={`px-2 py-1 rounded text-xs font-medium ${reg.type === 'team' ? 'bg-purple-500/20 text-purple-300' : 'bg-blue-500/20 text-blue-300'}`}>
+                                                <span className={`px-2 py-1 rounded text-xs font-medium ${reg.type === 'team' ? 'bg-orange-600/20 text-orange-400' : 'bg-orange-600/20 text-blue-300'}`}>
                                                     {reg.type.toUpperCase()}
                                                 </span>
                                             </td>

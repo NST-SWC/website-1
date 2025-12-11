@@ -67,13 +67,13 @@ const statusMeta: Record<
 > = {
   active: {
     message: "This squad is actively shipping every sprint.",
-    pill: "bg-emerald-400/15 text-emerald-200",
-    accent: "border-emerald-400/30 text-emerald-100 bg-emerald-400/5",
+    pill: "bg-orange-500/15 text-orange-300",
+    accent: "border-orange-500/30 text-emerald-100 bg-orange-500/5",
   },
   recruiting: {
     message: "New members are welcome. Submit a join request to jump in.",
-    pill: "bg-sky-400/15 text-sky-200",
-    accent: "border-sky-400/30 text-sky-100 bg-sky-400/5",
+    pill: "bg-orange-500/15 text-sky-200",
+    accent: "border-orange-500/30 text-sky-100 bg-orange-500/5",
   },
   waitlist: {
     message: "Squad is currently full. Waitlist to get notified when space opens.",
@@ -302,7 +302,7 @@ const ActivityRow = ({
   entry: ProjectActivityEntry;
 }) => (
   <div className="flex items-start gap-3 rounded-2xl border border-white/5 bg-white/5 p-4">
-    <div className="mt-1 h-2.5 w-2.5 rounded-full bg-emerald-300" />
+    <div className="mt-1 h-2.5 w-2.5 rounded-full bg-orange-400" />
     <div>
       <p className="text-sm font-semibold text-white">{entry.title}</p>
       <p className="text-xs text-white/60">{entry.description}</p>
@@ -396,7 +396,7 @@ export default async function ProjectDetailPage({ params }: Params) {
           <>
             <Link
               href="/projects"
-              className="flex items-center gap-2 rounded-full border border-white/10 px-5 py-2 text-sm text-white/70 transition hover:border-emerald-300/60 hover:text-white"
+              className="flex items-center gap-2 rounded-full border border-white/10 px-5 py-2 text-sm text-white/70 transition hover:border-orange-400/60 hover:text-white"
             >
               <ArrowLeft className="h-4 w-4" />
               Back to projects
@@ -421,7 +421,7 @@ export default async function ProjectDetailPage({ params }: Params) {
         <section className="space-y-6">
           <div className="rounded-3xl border border-white/10 bg-white/5 p-6">
             <div className="flex items-center gap-3 text-white/80">
-              <Layers className="h-5 w-5 text-emerald-300" />
+              <Layers className="h-5 w-5 text-orange-400" />
               <p className="text-sm uppercase tracking-[0.35em]">Overview</p>
             </div>
             <p className="mt-4 text-base leading-relaxed text-white/70">
@@ -448,7 +448,7 @@ export default async function ProjectDetailPage({ params }: Params) {
                 </p>
                 <h2 className="mt-2 text-xl font-semibold">Squad timeline</h2>
               </div>
-              <MessageCircle className="h-5 w-5 text-emerald-300" />
+              <MessageCircle className="h-5 w-5 text-orange-400" />
             </div>
             <ProjectUpdateForm
               projectId={project.id}
@@ -502,7 +502,7 @@ export default async function ProjectDetailPage({ params }: Params) {
                 </p>
                 <h2 className="mt-2 text-xl font-semibold">Core squad</h2>
               </div>
-              <Users className="h-5 w-5 text-emerald-300" />
+              <Users className="h-5 w-5 text-orange-400" />
             </div>
             {teamPreview.length ? (
               <div className="mt-4 space-y-3">
@@ -531,7 +531,7 @@ export default async function ProjectDetailPage({ params }: Params) {
               </p>
             )}
             <div className="mt-4 flex items-center gap-2 text-xs text-white/50">
-              <UserPlus className="h-4 w-4 text-emerald-300" />
+              <UserPlus className="h-4 w-4 text-orange-400" />
               {membersLabel}
             </div>
           </div>
@@ -549,11 +549,11 @@ export default async function ProjectDetailPage({ params }: Params) {
             </span>
             <div className="mt-6 space-y-3 text-sm text-white/70">
               <div className="flex items-center gap-2">
-                <Users className="h-4 w-4 text-emerald-300" />
+                <Users className="h-4 w-4 text-orange-400" />
                 {membersLabel}
               </div>
               <div className="flex items-center gap-2">
-                <Sparkles className="h-4 w-4 text-emerald-300" />
+                <Sparkles className="h-4 w-4 text-orange-400" />
                 Lead: {project.owner}
               </div>
             </div>
@@ -561,7 +561,7 @@ export default async function ProjectDetailPage({ params }: Params) {
               {allowManage && (
                 <Link
                   href={`/dashboard/projects/${project.id}/manage`}
-                  className="inline-flex w-full items-center justify-center rounded-full border border-white/15 px-5 py-2 text-sm text-white/80 transition hover:border-emerald-300/60"
+                  className="inline-flex w-full items-center justify-center rounded-full border border-white/15 px-5 py-2 text-sm text-white/80 transition hover:border-orange-400/60"
                 >
                   Manage project
                 </Link>
@@ -600,7 +600,7 @@ export default async function ProjectDetailPage({ params }: Params) {
               <p className="text-sm text-white/60">waiting for review</p>
               <Link
                 href={`/dashboard/projects/${project.id}/manage`}
-                className="mt-4 inline-flex w-full items-center justify-center rounded-full border border-white/15 px-5 py-2 text-sm text-white/80 transition hover:border-emerald-300/60"
+                className="mt-4 inline-flex w-full items-center justify-center rounded-full border border-white/15 px-5 py-2 text-sm text-white/80 transition hover:border-orange-400/60"
               >
                 Review requests
               </Link>
@@ -643,7 +643,7 @@ export default async function ProjectDetailPage({ params }: Params) {
               ) : (
                 <Link
                   href="/dashboard"
-                  className="mt-4 inline-flex w-full items-center justify-center rounded-full border border-white/15 px-5 py-2 text-sm text-white/80 transition hover:border-emerald-300/60"
+                  className="mt-4 inline-flex w-full items-center justify-center rounded-full border border-white/15 px-5 py-2 text-sm text-white/80 transition hover:border-orange-400/60"
                 >
                   Go to dashboard
                 </Link>

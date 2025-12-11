@@ -61,7 +61,7 @@ export default function MemberProfileModal({ userId, onClose }: MemberProfileMod
       <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm">
         <div className="w-full max-w-2xl rounded-3xl border border-white/10 bg-gray-900 p-8">
           <div className="flex items-center justify-center">
-            <div className="h-8 w-8 animate-spin rounded-full border-2 border-emerald-500 border-t-transparent"></div>
+            <div className="h-8 w-8 animate-spin rounded-full border-2 border-orange-600 border-t-transparent"></div>
           </div>
         </div>
       </div>
@@ -107,7 +107,7 @@ export default function MemberProfileModal({ userId, onClose }: MemberProfileMod
                   className="h-16 w-16 rounded-full object-cover"
                 />
               ) : (
-                <div className="flex h-16 w-16 items-center justify-center rounded-full bg-gradient-to-br from-emerald-400 to-cyan-400 text-2xl font-bold text-white">
+                <div className="flex h-16 w-16 items-center justify-center rounded-full bg-gradient-to-br from-orange-500 to-orange-400 text-2xl font-bold text-white">
                   {profile.name.charAt(0).toUpperCase()}
                 </div>
               )}
@@ -151,7 +151,7 @@ export default function MemberProfileModal({ userId, onClose }: MemberProfileMod
                       href={profile.github}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-emerald-400 transition hover:text-emerald-300 hover:underline"
+                      className="text-orange-500 transition hover:text-orange-400 hover:underline"
                     >
                       {profile.github.replace('https://github.com/', '@')}
                     </a>
@@ -164,7 +164,7 @@ export default function MemberProfileModal({ userId, onClose }: MemberProfileMod
                       href={profile.portfolio}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-emerald-400 transition hover:text-emerald-300 hover:underline"
+                      className="text-orange-500 transition hover:text-orange-400 hover:underline"
                     >
                       Portfolio
                     </a>
@@ -197,7 +197,7 @@ export default function MemberProfileModal({ userId, onClose }: MemberProfileMod
                   {profile.skills.map((skill, index) => (
                     <span
                       key={index}
-                      className="rounded-full border border-emerald-500/20 bg-emerald-500/10 px-3 py-1 text-xs text-emerald-400"
+                      className="rounded-full border border-orange-600/20 bg-orange-600/10 px-3 py-1 text-xs text-orange-500"
                     >
                       {skill}
                     </span>
@@ -214,7 +214,7 @@ export default function MemberProfileModal({ userId, onClose }: MemberProfileMod
                   {profile.interests.map((interest, index) => (
                     <span
                       key={index}
-                      className="rounded-full border border-cyan-500/20 bg-cyan-500/10 px-3 py-1 text-xs text-cyan-400"
+                      className="rounded-full border border-orange-500/20 bg-orange-500/10 px-3 py-1 text-xs text-orange-400"
                     >
                       {interest}
                     </span>
@@ -226,17 +226,17 @@ export default function MemberProfileModal({ userId, onClose }: MemberProfileMod
 
           {/* Sidebar - Stats */}
           <div className="space-y-4">
-            <div className="rounded-2xl border border-white/10 bg-gradient-to-br from-emerald-500/10 to-cyan-500/10 p-6">
+            <div className="rounded-2xl border border-white/10 bg-gradient-to-br from-orange-600/10 to-orange-500/10 p-6">
               <div className="mb-2 flex items-center gap-2">
-                <Target className="h-5 w-5 text-emerald-400" />
+                <Target className="h-5 w-5 text-orange-500" />
                 <h3 className="font-semibold">Points</h3>
               </div>
-              <p className="text-3xl font-bold text-emerald-400">
+              <p className="text-3xl font-bold text-orange-500">
                 {profile.points ?? 0}
               </p>
             </div>
 
-            <div className="rounded-2xl border border-white/10 bg-gradient-to-br from-purple-500/10 to-pink-500/10 p-6">
+            <div className="rounded-2xl border border-white/10 bg-gradient-to-br from-orange-600/10 to-pink-500/10 p-6">
               <div className="mb-2 flex items-center gap-2">
                 <Award className="h-5 w-5 text-purple-400" />
                 <h3 className="font-semibold">Badges</h3>
@@ -258,12 +258,12 @@ export default function MemberProfileModal({ userId, onClose }: MemberProfileMod
               )}
             </div>
 
-            <div className="rounded-2xl border border-white/10 bg-gradient-to-br from-blue-500/10 to-indigo-500/10 p-6">
+            <div className="rounded-2xl border border-white/10 bg-gradient-to-br from-orange-600/10 to-red-600/10 p-6">
               <div className="mb-2 flex items-center gap-2">
-                <Target className="h-5 w-5 text-blue-400" />
+                <Target className="h-5 w-5 text-orange-500" />
                 <h3 className="font-semibold">Projects</h3>
               </div>
-              <p className="text-3xl font-bold text-blue-400">
+              <p className="text-3xl font-bold text-orange-500">
                 {profile.projectsCompleted ?? 0}
               </p>
               <p className="mt-1 text-xs text-white/50">Completed</p>

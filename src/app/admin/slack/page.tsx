@@ -8,7 +8,7 @@ import { PageContainer } from "@/components/shared/page-container";
 import { PageIntro } from "@/components/shared/page-intro";
 
 const buttonBase =
-  "rounded-full border px-5 py-2 text-sm transition focus:outline-none focus:ring-2 focus:ring-emerald-400/60 focus:ring-offset-2 focus:ring-offset-black";
+  "rounded-full border px-5 py-2 text-sm transition focus:outline-none focus:ring-2 focus:ring-orange-500/60 focus:ring-offset-2 focus:ring-offset-black";
 
 export default function AdminSlackPage() {
   const { user } = useAuth();
@@ -81,7 +81,7 @@ export default function AdminSlackPage() {
           <div className="flex gap-3">
             <Link
               href="/admin/webpush"
-              className={`${buttonBase} border-emerald-500/30 bg-emerald-500/10 text-emerald-300 hover:border-emerald-400 hover:bg-emerald-500/20`}
+              className={`${buttonBase} border-orange-600/30 bg-orange-600/10 text-orange-400 hover:border-orange-500 hover:bg-orange-600/20`}
             >
               Web Push
             </Link>
@@ -101,7 +101,7 @@ export default function AdminSlackPage() {
             <div className="space-y-1">
               <label className="text-xs uppercase tracking-[0.2em] text-white/50">Title</label>
               <input
-                className="w-full rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-white placeholder:text-white/40 focus:border-emerald-400/60 focus:outline-none"
+                className="w-full rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-white placeholder:text-white/40 focus:border-orange-500/60 focus:outline-none"
                 value={title}
                 onChange={(e) => setTitle(e.target.value)}
                 placeholder="Dev Club Announcement"
@@ -110,7 +110,7 @@ export default function AdminSlackPage() {
             <div className="space-y-1">
               <label className="text-xs uppercase tracking-[0.2em] text-white/50">Ping</label>
               <select
-                className="w-full rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-white focus:border-emerald-400/60 focus:outline-none"
+                className="w-full rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-white focus:border-orange-500/60 focus:outline-none"
                 value={ping}
                 onChange={(e) => setPing(e.target.value as any)}
               >
@@ -124,7 +124,7 @@ export default function AdminSlackPage() {
           <div className="space-y-1">
             <label className="text-xs uppercase tracking-[0.2em] text-white/50">Message</label>
             <textarea
-              className="w-full rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-white placeholder:text-white/40 focus:border-emerald-400/60 focus:outline-none"
+              className="w-full rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-white placeholder:text-white/40 focus:border-orange-500/60 focus:outline-none"
               rows={4}
               value={body}
               onChange={(e) => setBody(e.target.value)}
@@ -136,7 +136,7 @@ export default function AdminSlackPage() {
             <div className="space-y-1">
               <label className="text-xs uppercase tracking-[0.2em] text-white/50">Button URL (optional)</label>
               <input
-                className="w-full rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-white placeholder:text-white/40 focus:border-emerald-400/60 focus:outline-none"
+                className="w-full rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-white placeholder:text-white/40 focus:border-orange-500/60 focus:outline-none"
                 value={url}
                 onChange={(e) => setUrl(e.target.value)}
                 placeholder="https://example.com"
@@ -145,7 +145,7 @@ export default function AdminSlackPage() {
             <div className="space-y-1">
               <label className="text-xs uppercase tracking-[0.2em] text-white/50">Channel override</label>
               <input
-                className="w-full rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-white placeholder:text-white/40 focus:border-emerald-400/60 focus:outline-none"
+                className="w-full rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-white placeholder:text-white/40 focus:border-orange-500/60 focus:outline-none"
                 value={channel}
                 onChange={(e) => setChannel(e.target.value)}
                 placeholder="Comma separated channel IDs, blank uses default"
@@ -157,7 +157,7 @@ export default function AdminSlackPage() {
             <button
               onClick={sendSlack}
               disabled={sending}
-              className="inline-flex items-center gap-2 rounded-full bg-emerald-500/90 px-5 py-3 text-sm font-semibold text-black shadow-lg shadow-emerald-500/30 transition hover:-translate-y-0.5 disabled:cursor-not-allowed disabled:opacity-60"
+              className="inline-flex items-center gap-2 rounded-full bg-orange-600/90 px-5 py-3 text-sm font-semibold text-black shadow-lg shadow-orange-600/30 transition hover:-translate-y-0.5 disabled:cursor-not-allowed disabled:opacity-60"
             >
               <Send className="h-4 w-4" />
               {sending ? "Sending..." : "Send to Slack"}
@@ -184,14 +184,14 @@ export default function AdminSlackPage() {
           )}
         </div>
 
-        <div className="rounded-3xl border border-emerald-400/20 bg-emerald-400/5 p-5 text-sm text-emerald-100/80">
+        <div className="rounded-3xl border border-orange-500/20 bg-orange-500/5 p-5 text-sm text-emerald-100/80">
           <div className="flex items-start gap-3">
-            <div className="mt-1 text-emerald-300">
+            <div className="mt-1 text-orange-400">
               <Sparkles className="h-5 w-5" />
             </div>
             <div className="space-y-3">
               <div>
-                <p className="text-emerald-200 font-semibold">Tips</p>
+                <p className="text-orange-300 font-semibold">Tips</p>
                 <ul className="mt-1 space-y-1 text-xs text-emerald-100/80">
                   <li>• Use <code>@here</code> for time-sensitive updates, <code>@channel</code> for major announcements.</li>
                   <li>• Add a URL so Slack renders a button and deep-links into the portal.</li>
@@ -199,7 +199,7 @@ export default function AdminSlackPage() {
                 </ul>
               </div>
               <div>
-                <p className="text-emerald-200 font-semibold">Requirements</p>
+                <p className="text-orange-300 font-semibold">Requirements</p>
                 <p className="mt-1 text-xs text-emerald-100/80">
                   Set SLACK_WEBHOOK_URL (preferred) or SLACK_BOT_TOKEN + SLACK_DEVCLUB_CHANNEL_ID plus SLACK_SEND_SECRET in
                   the environment. This page works only for admins (authenticated in the portal).

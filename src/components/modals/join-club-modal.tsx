@@ -35,7 +35,7 @@ export const JoinClubModal = ({ open, onClose }: ModalProps) => (
             <X className="h-4 w-4" />
           </button>
           <div className="mb-4 sm:mb-6 space-y-2">
-            <span className="inline-flex items-center rounded-full border border-emerald-400/30 px-3 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-emerald-200">
+            <span className="inline-flex items-center rounded-full border border-orange-500/30 px-3 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-orange-300">
               Join DevForge
             </span>
             <h3 className="text-2xl sm:text-3xl font-semibold">

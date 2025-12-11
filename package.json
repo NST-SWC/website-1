@@ -17,6 +17,8 @@
     "slack:send": "node scripts/send-slack-message.js",
     "generate-icons": "node scripts/generate-icons.js",
     "generate-icons:from-source": "node scripts/generate-icons.js public/devforge-source.png",
+    "hackathon:schedule": "node scripts/schedule-hackathon-notifications-production.js",
+    "hackathon:schedule:dry-run": "node scripts/schedule-hackathon-notifications-production.js --dry-run",
     "postinstall": "npm run generate-icons"
   },
   "dependencies": {

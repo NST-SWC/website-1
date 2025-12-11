@@ -72,7 +72,7 @@ export const RequestCard = ({ request }: { request: AdminRequest }) => {
           disabled={decision === "approve" || loading !== "none"}
           className={`rounded-full px-5 py-2 text-xs font-semibold uppercase tracking-[0.3em] ${
             decision === "approve"
-              ? "bg-emerald-400 text-black"
+              ? "bg-orange-500 text-black"
               : "bg-gradient-to-r from-[#00f5c4] to-[#00c2ff] text-black"
           }`}
         >
@@ -94,7 +94,7 @@ export const RequestCard = ({ request }: { request: AdminRequest }) => {
         <div className="mt-3 text-sm text-white/60">Status: {decision}</div>
       )}
       {message && (
-        <div className="mt-3 rounded-2xl border border-emerald-400/20 bg-emerald-400/5 p-3 text-sm text-emerald-200">
+        <div className="mt-3 rounded-2xl border border-orange-500/20 bg-orange-500/5 p-3 text-sm text-orange-300">
           {message}
         </div>
       )}

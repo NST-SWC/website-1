@@ -148,7 +148,7 @@ export default function Navbar({ showGuestCtas = false, onLogin, onJoin }: Navba
       <nav className="sticky top-0 z-40 hidden items-center justify-between border-b border-white/10 bg-transparent px-4 py-3 text-white backdrop-blur-sm lg:flex md:px-10">
         <Link
           href="/"
-          className="flex-shrink-0 font-semibold tracking-[0.3em] text-xs hover:text-cyan-400 md:text-sm"
+          className="flex-shrink-0 font-semibold tracking-[0.3em] text-xs hover:text-orange-400 md:text-sm"
         >
           DevForge
         </Link>
@@ -162,7 +162,7 @@ export default function Navbar({ showGuestCtas = false, onLogin, onJoin }: Navba
                   href={item.path}
                   className={`flex items-center gap-2 rounded-lg px-3 py-2 transition ${
                     isActive(item.path)
-                      ? "bg-cyan-400/10 font-semibold text-cyan-400"
+                      ? "bg-orange-400/10 font-semibold text-orange-400"
                       : "text-gray-300 hover:bg-white/5 hover:text-white"
                   }`}
                 >
@@ -189,19 +189,19 @@ export default function Navbar({ showGuestCtas = false, onLogin, onJoin }: Navba
             <>
               <button
                 onClick={handleLogout}
-                className="flex items-center gap-2 rounded-lg px-3 py-2 text-sm transition hover:bg-white/5 hover:text-cyan-400"
+                className="flex items-center gap-2 rounded-lg px-3 py-2 text-sm transition hover:bg-white/5 hover:text-orange-400"
               >
                 <LogOut className="h-4 w-4" />
                 Logout
               </button>
               <Link
                 href="/dashboard/profile"
-                className="flex items-center gap-2 rounded-full border border-white/20 px-3 py-1.5 transition hover:border-cyan-400/50 hover:bg-white/5"
+                className="flex items-center gap-2 rounded-full border border-white/20 px-3 py-1.5 transition hover:border-orange-400/50 hover:bg-white/5"
               >
                 {user?.avatar ? (
                   <img src={user.avatar} alt={user?.name || "Avatar"} className="h-6 w-6 rounded-full object-cover" />
                 ) : (
-                  <div className="flex h-6 w-6 items-center justify-center rounded-full bg-gradient-to-br from-cyan-400 to-blue-500 text-xs font-semibold">
+                  <div className="flex h-6 w-6 items-center justify-center rounded-full bg-gradient-to-br from-orange-400 to-orange-600 text-xs font-semibold">
                     {user?.name?.charAt(0).toUpperCase() || "U"}
                   </div>
                 )}
@@ -212,14 +212,14 @@ export default function Navbar({ showGuestCtas = false, onLogin, onJoin }: Navba
             <div className="flex items-center gap-2">
               <button
                 onClick={handleLoginClick}
-                className="rounded-full border border-white/15 px-4 py-2 text-sm font-semibold text-white/80 transition hover:border-cyan-400/60 hover:text-white"
+                className="rounded-full border border-white/15 px-4 py-2 text-sm font-semibold text-white/80 transition hover:border-orange-400/60 hover:text-white"
               >
                 Login
               </button>
               {showGuestCtas && (
                 <button
                   onClick={handleJoinClick}
-                  className="rounded-full bg-gradient-to-r from-cyan-400 to-blue-500 px-4 py-2 text-sm font-semibold text-black shadow-lg shadow-cyan-500/40"
+                  className="rounded-full bg-gradient-to-r from-orange-400 to-orange-600 px-4 py-2 text-sm font-semibold text-black shadow-lg shadow-orange-500/40"
                 >
                   Join
                 </button>
@@ -237,7 +237,7 @@ export default function Navbar({ showGuestCtas = false, onLogin, onJoin }: Navba
         >
           <Menu className="h-5 w-5" />
         </button>
-        <Link href="/" className="text-xs font-semibold tracking-[0.2em] text-white hover:text-cyan-400">
+        <Link href="/" className="text-xs font-semibold tracking-[0.2em] text-white hover:text-orange-400">
           DevForge
         </Link>
         <div className="flex items-center gap-2">
@@ -305,8 +305,8 @@ export default function Navbar({ showGuestCtas = false, onLogin, onJoin }: Navba
                       onClick={() => setIsMobileMenuOpen(false)}
                       className={`flex items-center justify-between rounded-2xl border px-4 py-3 transition ${
                         isActive(item.path)
-                          ? "border-cyan-400/60 bg-cyan-400/10 text-white"
-                          : "border-white/10 bg-white/5 text-white/80 hover:border-cyan-400/40 hover:text-white"
+                          ? "border-orange-400/60 bg-orange-400/10 text-white"
+                          : "border-white/10 bg-white/5 text-white/80 hover:border-orange-400/40 hover:text-white"
                       }`}
                     >
                       <div>
@@ -330,7 +330,7 @@ export default function Navbar({ showGuestCtas = false, onLogin, onJoin }: Navba
                           className="h-12 w-12 rounded-2xl object-cover"
                         />
                       ) : (
-                        <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br from-cyan-400 to-blue-500 text-lg font-semibold">
+                        <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br from-orange-400 to-orange-600 text-lg font-semibold">
                           {user?.name?.charAt(0).toUpperCase() || "U"}
                         </div>
                       )}
@@ -350,7 +350,7 @@ export default function Navbar({ showGuestCtas = false, onLogin, onJoin }: Navba
                       <Link
                         href="/dashboard"
                         onClick={() => setIsMobileMenuOpen(false)}
-                        className="flex items-center justify-between rounded-2xl bg-gradient-to-r from-cyan-400 to-blue-500 px-4 py-3 text-sm font-semibold text-black shadow-lg shadow-cyan-500/40"
+                        className="flex items-center justify-between rounded-2xl bg-gradient-to-r from-orange-400 to-orange-600 px-4 py-3 text-sm font-semibold text-black shadow-lg shadow-orange-500/40"
                       >
                         Open Dashboard
                         <Home className="h-4 w-4" />
@@ -358,7 +358,7 @@ export default function Navbar({ showGuestCtas = false, onLogin, onJoin }: Navba
                       <Link
                         href="/projects"
                         onClick={() => setIsMobileMenuOpen(false)}
-                        className="flex items-center justify-between rounded-2xl border border-white/15 px-4 py-3 text-sm font-semibold text-white/80 hover:border-cyan-400/50 hover:text-white"
+                        className="flex items-center justify-between rounded-2xl border border-white/15 px-4 py-3 text-sm font-semibold text-white/80 hover:border-orange-400/50 hover:text-white"
                       >
                         View Projects
                         <Folder className="h-4 w-4" />
@@ -378,7 +378,7 @@ export default function Navbar({ showGuestCtas = false, onLogin, onJoin }: Navba
                       {showGuestCtas && (
                         <button
                           onClick={handleJoinClick}
-                          className="flex-1 rounded-full bg-gradient-to-r from-cyan-400 to-blue-500 px-3 py-2 text-xs font-semibold text-black"
+                          className="flex-1 rounded-full bg-gradient-to-r from-orange-400 to-orange-600 px-3 py-2 text-xs font-semibold text-black"
                         >
                           Join the club
                         </button>

@@ -65,7 +65,7 @@ export default function FirebaseTestPage() {
         
         <button
           onClick={testFirebase}
-          className="mb-6 rounded-lg bg-emerald-500 px-6 py-3 font-medium text-black hover:bg-emerald-400"
+          className="mb-6 rounded-lg bg-orange-600 px-6 py-3 font-medium text-black hover:bg-orange-500"
         >
           Test Firebase Connection
         </button>
@@ -122,19 +122,19 @@ export default function FirebaseTestPage() {
           <div className="space-y-2 text-sm">
             <div>
               <span className="text-white/60">API Key: </span>
-              <span className={process.env.NEXT_PUBLIC_FIREBASE_API_KEY ? "text-emerald-400" : "text-red-400"}>
+              <span className={process.env.NEXT_PUBLIC_FIREBASE_API_KEY ? "text-orange-500" : "text-red-400"}>
                 {process.env.NEXT_PUBLIC_FIREBASE_API_KEY ? "✅ Set" : "❌ Not set"}
               </span>
             </div>
             <div>
               <span className="text-white/60">Project ID: </span>
-              <span className={process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID ? "text-emerald-400" : "text-red-400"}>
+              <span className={process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID ? "text-orange-500" : "text-red-400"}>
                 {process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID ? "✅ Set" : "❌ Not set"}
               </span>
             </div>
             <div>
               <span className="text-white/60">Storage Bucket: </span>
-              <span className={process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET ? "text-emerald-400" : "text-red-400"}>
+              <span className={process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET ? "text-orange-500" : "text-red-400"}>
                 {process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET ? `✅ ${process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET}` : "❌ Not set"}
               </span>
             </div>

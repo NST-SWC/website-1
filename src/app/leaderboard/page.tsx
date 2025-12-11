@@ -11,7 +11,7 @@ const LeaderboardPage = () => (
       actions={
         <Link
           href="/"
-          className="rounded-full border border-white/10 px-5 py-2 text-sm text-white/70 transition hover:border-emerald-300/60 hover:text-white"
+          className="rounded-full border border-white/10 px-5 py-2 text-sm text-white/70 transition hover:border-orange-400/60 hover:text-white"
         >
           ← Back home
         </Link>

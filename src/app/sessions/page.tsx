@@ -85,7 +85,7 @@ const SessionsPage = () => {
         actions={
           <Link
             href="/events"
-            className="rounded-full border border-white/10 px-5 py-2 text-sm text-white/70 transition hover:border-emerald-300/60 hover:text-white"
+            className="rounded-full border border-white/10 px-5 py-2 text-sm text-white/70 transition hover:border-orange-400/60 hover:text-white"
           >
             View events
           </Link>
@@ -98,9 +98,9 @@ const SessionsPage = () => {
           <table className="min-w-full text-sm text-left border border-white/10 rounded-2xl bg-gradient-to-br from-black/40 to-slate-900/60 shadow-lg">
             <thead>
               <tr className="bg-black/60">
-                <th className="px-6 py-3 text-cyan-300 font-semibold">Date</th>
-                <th className="px-6 py-3 text-cyan-300 font-semibold">Day</th>
-                <th className="px-6 py-3 text-cyan-300 font-semibold">Event</th>
+                <th className="px-6 py-3 text-orange-300 font-semibold">Date</th>
+                <th className="px-6 py-3 text-orange-300 font-semibold">Day</th>
+                <th className="px-6 py-3 text-orange-300 font-semibold">Event</th>
               </tr>
             </thead>
             <tbody>

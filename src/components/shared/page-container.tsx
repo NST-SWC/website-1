@@ -29,7 +29,7 @@ export const PageContainer = ({ children }: { children: ReactNode }) => {
           <div className="mx-auto flex max-w-6xl flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
             <Link
               href="/"
-              className="text-xs font-semibold uppercase tracking-[0.4em] text-white/70 transition hover:text-cyan-400"
+              className="text-xs font-semibold uppercase tracking-[0.4em] text-white/70 transition hover:text-orange-400"
             >
               DevForge
             </Link>
@@ -40,7 +40,7 @@ export const PageContainer = ({ children }: { children: ReactNode }) => {
                   href={link.href}
                   className={`rounded-full px-3 py-1 transition ${
                     isActive(link.href)
-                      ? "bg-cyan-400/10 font-semibold text-cyan-300"
+                      ? "bg-orange-400/10 font-semibold text-orange-300"
                       : "hover:bg-white/5 hover:text-white"
                   }`}
                 >
@@ -49,7 +49,7 @@ export const PageContainer = ({ children }: { children: ReactNode }) => {
               ))}
               <Link
                 href="/"
-                className="rounded-full border border-white/10 px-3 py-1 text-xs font-semibold text-white/70 transition hover:border-cyan-400/60 hover:text-white"
+                className="rounded-full border border-white/10 px-3 py-1 text-xs font-semibold text-white/70 transition hover:border-orange-400/60 hover:text-white"
               >
                 Login
               </Link>

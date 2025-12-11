@@ -263,19 +263,19 @@ const AdminPage = () => {
         <div className="flex gap-3">
           <Link
             href="/admin/slack"
-            className="rounded-full border border-sky-400/40 bg-sky-400/10 px-5 py-2 text-sm text-sky-200 transition hover:border-sky-300 hover:bg-sky-400/20"
+            className="rounded-full border border-orange-500/40 bg-orange-500/10 px-5 py-2 text-sm text-sky-200 transition hover:border-sky-300 hover:bg-orange-500/20"
           >
             📣 Slack Announcement
           </Link>
           <Link
             href="/admin/webpush"
-            className="rounded-full border border-emerald-500/30 bg-emerald-500/10 px-5 py-2 text-sm text-emerald-400 transition hover:border-emerald-400 hover:bg-emerald-500/20"
+            className="rounded-full border border-orange-600/30 bg-orange-600/10 px-5 py-2 text-sm text-orange-500 transition hover:border-orange-500 hover:bg-orange-600/20"
           >
             🔔 Send Notification
           </Link>
           <Link
             href="/"
-            className="rounded-full border border-white/10 px-5 py-2 text-sm text-white/70 transition hover:border-emerald-300/60 hover:text-white"
+            className="rounded-full border border-white/10 px-5 py-2 text-sm text-white/70 transition hover:border-orange-400/60 hover:text-white"
           >
             ← Back home
           </Link>
@@ -289,7 +289,7 @@ const AdminPage = () => {
         onClick={() => setActiveTab("members")}
         className={`px-6 py-3 text-sm font-medium transition ${
           activeTab === "members"
-            ? "border-b-2 border-emerald-400 text-emerald-400"
+            ? "border-b-2 border-orange-500 text-orange-500"
             : "text-white/60 hover:text-white"
         }`}
       >
@@ -299,7 +299,7 @@ const AdminPage = () => {
         onClick={() => setActiveTab("projects")}
         className={`px-6 py-3 text-sm font-medium transition ${
           activeTab === "projects"
-            ? "border-b-2 border-emerald-400 text-emerald-400"
+            ? "border-b-2 border-orange-500 text-orange-500"
             : "text-white/60 hover:text-white"
         }`}
       >
@@ -322,7 +322,7 @@ const AdminPage = () => {
                 className="rounded-3xl border border-white/10 bg-black/40 p-6"
               >
                 <div className="mb-4">
-                  <p className="text-sm uppercase tracking-[0.3em] text-sky-400">
+                  <p className="text-sm uppercase tracking-[0.3em] text-orange-500">
                     {member.role || "Student"} • {member.experience || "Beginner"}
                   </p>
                   <h3 className="mt-2 text-xl font-semibold text-white">
@@ -339,7 +339,7 @@ const AdminPage = () => {
                       {member.interests.map((interest, idx) => (
                         <span
                           key={idx}
-                          className="rounded-full bg-emerald-400/10 px-3 py-1 text-xs text-emerald-400"
+                          className="rounded-full bg-orange-500/10 px-3 py-1 text-xs text-orange-500"
                         >
                           {interest}
                         </span>
@@ -362,7 +362,7 @@ const AdminPage = () => {
                         href={`https://github.com/${member.github}`}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-blue-400 hover:text-blue-300 transition"
+                        className="text-orange-500 hover:text-blue-300 transition"
                       >
                         🔗 GitHub: {member.github}
                       </a>
@@ -372,7 +372,7 @@ const AdminPage = () => {
                         href={member.portfolio}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-purple-400 hover:text-purple-300 transition"
+                        className="text-purple-400 hover:text-orange-400 transition"
                       >
                         🌐 Portfolio
                       </a>
@@ -402,7 +402,7 @@ const AdminPage = () => {
 
                 <div className="flex gap-3">
                   <button
-                    className="flex-1 rounded-full bg-emerald-400/10 px-4 py-2 text-sm font-medium text-emerald-400 transition hover:bg-emerald-400/20"
+                    className="flex-1 rounded-full bg-orange-500/10 px-4 py-2 text-sm font-medium text-orange-500 transition hover:bg-orange-500/20"
                     onClick={() => handleApproveMember(member.id, member.email, member.name)}
                   >
                     <CheckCircle className="inline h-4 w-4 mr-1" />
@@ -442,7 +442,7 @@ const AdminPage = () => {
                 className="rounded-3xl border border-white/10 bg-black/40 p-6"
               >
                 <div className="mb-4">
-                  <p className="text-sm uppercase tracking-[0.3em] text-emerald-200">
+                  <p className="text-sm uppercase tracking-[0.3em] text-orange-300">
                     {request.projectName || `Project: ${request.projectId}`}
                   </p>
                   <h3 className="mt-2 text-xl font-semibold text-white">
@@ -468,7 +468,7 @@ const AdminPage = () => {
 
                 <div className="flex gap-3">
                   <button
-                    className="flex-1 rounded-full bg-emerald-400/10 px-4 py-2 text-sm font-medium text-emerald-400 transition hover:bg-emerald-400/20"
+                    className="flex-1 rounded-full bg-orange-500/10 px-4 py-2 text-sm font-medium text-orange-500 transition hover:bg-orange-500/20"
                     onClick={() => handleApprove(request.id, request.projectId, request.userId)}
                   >
                     <CheckCircle className="inline h-4 w-4 mr-1" />
@@ -495,7 +495,7 @@ const AdminPage = () => {
     {/* Credentials Modal */}
     {showCredentialsModal && credentials && (
       <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm p-4">
-        <div className="relative max-w-lg w-full rounded-3xl border border-emerald-400/30 bg-black/95 p-8">
+        <div className="relative max-w-lg w-full rounded-3xl border border-orange-500/30 bg-black/95 p-8">
           <button
             onClick={() => setShowCredentialsModal(false)}
             className="absolute top-4 right-4 text-white/60 hover:text-white transition"
@@ -504,8 +504,8 @@ const AdminPage = () => {
           </button>
 
           <div className="text-center mb-6">
-            <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-emerald-400/10 mb-4">
-              <CheckCircle className="h-8 w-8 text-emerald-400" />
+            <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-orange-500/10 mb-4">
+              <CheckCircle className="h-8 w-8 text-orange-500" />
             </div>
             <h3 className="text-2xl font-semibold text-white mb-2">
               Member Approved!
@@ -526,14 +526,14 @@ const AdminPage = () => {
               <p className="text-white font-medium">{credentials.email}</p>
             </div>
 
-            <div className="rounded-2xl border border-emerald-400/20 bg-emerald-400/5 p-4">
-              <p className="text-xs text-emerald-400/70 mb-1">Username</p>
-              <p className="text-emerald-300 font-mono text-sm">{credentials.username}</p>
+            <div className="rounded-2xl border border-orange-500/20 bg-orange-500/5 p-4">
+              <p className="text-xs text-orange-500/70 mb-1">Username</p>
+              <p className="text-orange-400 font-mono text-sm">{credentials.username}</p>
             </div>
 
-            <div className="rounded-2xl border border-emerald-400/20 bg-emerald-400/5 p-4">
-              <p className="text-xs text-emerald-400/70 mb-1">Password</p>
-              <p className="text-emerald-300 font-mono text-sm">{credentials.password}</p>
+            <div className="rounded-2xl border border-orange-500/20 bg-orange-500/5 p-4">
+              <p className="text-xs text-orange-500/70 mb-1">Password</p>
+              <p className="text-orange-400 font-mono text-sm">{credentials.password}</p>
             </div>
           </div>
 
@@ -544,7 +544,7 @@ const AdminPage = () => {
                 navigator.clipboard.writeText(text);
                 alert("📋 Credentials copied to clipboard!");
               }}
-              className="w-full rounded-full bg-emerald-400/10 border border-emerald-400/30 px-6 py-3 text-sm font-medium text-emerald-400 transition hover:bg-emerald-400/20"
+              className="w-full rounded-full bg-orange-500/10 border border-orange-500/30 px-6 py-3 text-sm font-medium text-orange-500 transition hover:bg-orange-500/20"
             >
               📋 Copy Credentials
             </button>
@@ -557,20 +557,20 @@ const AdminPage = () => {
             </button>
           </div>
 
-          <div className="mt-6 rounded-xl bg-blue-400/5 border border-blue-400/20 p-4 text-xs text-blue-400/80">
-            <p className="font-medium text-blue-400 mb-1">📧 Next Step:</p>
+          <div className="mt-6 rounded-xl bg-orange-500/5 border border-orange-500/20 p-4 text-xs text-orange-500/80">
+            <p className="font-medium text-orange-500 mb-1">📧 Next Step:</p>
             <p>Send these credentials to {credentials.email} manually via email.</p>
           </div>
         </div>
       </div>
     )}
 
-    <div className="mt-8 rounded-3xl border border-emerald-400/20 bg-emerald-400/5 p-5 text-sm text-emerald-400/90">
+    <div className="mt-8 rounded-3xl border border-orange-500/20 bg-orange-500/5 p-5 text-sm text-orange-500/90">
       <div className="flex items-start gap-3">
         <div className="mt-0.5">ℹ️</div>
         <div>
-          <strong className="text-emerald-300">Admin Portal Instructions:</strong>
-          <ul className="mt-2 space-y-1 text-xs text-emerald-400/80">
+          <strong className="text-orange-400">Admin Portal Instructions:</strong>
+          <ul className="mt-2 space-y-1 text-xs text-orange-500/80">
             <li>• <strong>Approve:</strong> Auto-generates username (firstname) and password (firstname123), copies to clipboard</li>
             <li>• <strong>Reject:</strong> Removes the request from pending list</li>
             <li>• After approval, manually send the credentials to the member via email</li>

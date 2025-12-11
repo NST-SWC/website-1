@@ -23,9 +23,9 @@ const STORAGE_KEYS = {
 };
 
 const toneMap: Record<string, string> = {
-  emerald: "from-emerald-400/25 to-emerald-500/10 text-emerald-200",
-  sky: "from-sky-400/25 to-sky-500/10 text-sky-200",
-  indigo: "from-indigo-400/25 to-indigo-500/10 text-indigo-200",
+  emerald: "from-orange-500/25 to-orange-600/10 text-orange-300",
+  sky: "from-orange-500/25 to-orange-600/10 text-sky-200",
+  indigo: "from-indigo-400/25 to-red-600/10 text-indigo-200",
 };
 
 const readCache = (key: string) => {
@@ -152,7 +152,7 @@ export default function DashboardPage() {
       <div className="space-y-8">
         {/* Welcome Header */}
         <div className="rounded-3xl border border-white/10 bg-black/40 p-6">
-          <p className="text-sm uppercase tracking-[0.3em] text-emerald-200">
+          <p className="text-sm uppercase tracking-[0.3em] text-orange-300">
             Welcome back
           </p>
           <h1 className="mt-2 text-3xl font-semibold">
@@ -180,7 +180,7 @@ export default function DashboardPage() {
             <div className="rounded-3xl border border-white/10 bg-black/40 p-6">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-sm uppercase tracking-[0.3em] text-emerald-200">
+                  <p className="text-sm uppercase tracking-[0.3em] text-orange-300">
                     Your Projects
                   </p>
                   <h2 className="text-2xl font-semibold">Active work</h2>
@@ -195,7 +195,7 @@ export default function DashboardPage() {
                   </Link>
                   <Link
                     href="/projects"
-                    className="rounded-full border border-white/15 px-4 py-2 text-sm text-white/80 transition hover:border-emerald-300 hover:text-white"
+                    className="rounded-full border border-white/15 px-4 py-2 text-sm text-white/80 transition hover:border-orange-400 hover:text-white"
                   >
                     Browse all
                   </Link>
@@ -211,7 +211,7 @@ export default function DashboardPage() {
                     <p className="mb-4">You're not part of any projects yet.</p>
                     <Link
                       href="/projects"
-                      className="text-emerald-400 hover:text-emerald-300 underline"
+                      className="text-orange-500 hover:text-orange-400 underline"
                     >
                       Browse available projects →
                     </Link>
@@ -257,7 +257,7 @@ export default function DashboardPage() {
                     ) : (
                       <Link
                         href={`/projects/${project.id}`}
-                        className="mt-4 inline-flex items-center gap-2 rounded-full border border-white/20 px-4 py-2 text-sm text-white/80 transition hover:border-emerald-300 hover:text-white"
+                        className="mt-4 inline-flex items-center gap-2 rounded-full border border-white/20 px-4 py-2 text-sm text-white/80 transition hover:border-orange-400 hover:text-white"
                       >
                         View Details
                       </Link>
@@ -272,14 +272,14 @@ export default function DashboardPage() {
               <div className="rounded-3xl border border-white/10 bg-black/40 p-6">
                 <div className="flex items-center justify-between">
                   <div>
-                    <p className="text-sm uppercase tracking-[0.3em] text-emerald-200">
+                    <p className="text-sm uppercase tracking-[0.3em] text-orange-300">
                       Sessions
                     </p>
                     <h2 className="text-2xl font-semibold">Upcoming schedule</h2>
                   </div>
                   <Link
                     href="/sessions"
-                    className="rounded-full border border-white/15 px-4 py-2 text-sm text-white/80 transition hover:border-emerald-300 hover:text-white"
+                    className="rounded-full border border-white/15 px-4 py-2 text-sm text-white/80 transition hover:border-orange-400 hover:text-white"
                   >
                     View calendar
                   </Link>

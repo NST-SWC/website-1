@@ -37,7 +37,7 @@ const CalendarPage = () => {
       actions={
         <Link
           href="/"
-          className="rounded-full border border-white/10 px-5 py-2 text-sm text-white/70 transition hover:border-emerald-300/60 hover:text-white"
+          className="rounded-full border border-white/10 px-5 py-2 text-sm text-white/70 transition hover:border-orange-400/60 hover:text-white"
         >
           ← Back home
         </Link>
@@ -109,7 +109,7 @@ const CalendarPage = () => {
             className="flex flex-col gap-4 rounded-3xl border border-white/10 bg-white/5 p-6 md:flex-row md:items-center"
           >
             <div className="rounded-2xl border border-white/10 px-5 py-4 text-center">
-              <p className="text-3xl font-semibold text-emerald-200">
+              <p className="text-3xl font-semibold text-orange-300">
                 {new Date(session.date).getDate()}
               </p>
               <p className="text-xs uppercase tracking-[0.3em] text-white/50">

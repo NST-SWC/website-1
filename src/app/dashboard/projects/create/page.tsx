@@ -44,7 +44,7 @@ const CreateProjectPage = () => {
           </p>
           <button
             onClick={() => router.push("/")}
-            className="mt-4 text-emerald-400 hover:underline"
+            className="mt-4 text-orange-500 hover:underline"
           >
             ← Back to home
           </button>
@@ -116,7 +116,7 @@ const CreateProjectPage = () => {
         actions={
           <button
             onClick={() => router.back()}
-            className="flex items-center gap-2 rounded-full border border-white/10 px-5 py-2 text-sm text-white/70 transition hover:border-emerald-300/60 hover:text-white"
+            className="flex items-center gap-2 rounded-full border border-white/10 px-5 py-2 text-sm text-white/70 transition hover:border-orange-400/60 hover:text-white"
           >
             <ArrowLeft className="h-4 w-4" />
             Cancel
@@ -137,7 +137,7 @@ const CreateProjectPage = () => {
               value={title}
               onChange={(e) => setTitle(e.target.value)}
               placeholder="e.g., AI Study Companion"
-              className="mt-2 w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-white placeholder:text-white/40 outline-none transition focus:border-emerald-400/50 focus:bg-white/10"
+              className="mt-2 w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-white placeholder:text-white/40 outline-none transition focus:border-orange-500/50 focus:bg-white/10"
               maxLength={100}
               required
             />
@@ -157,7 +157,7 @@ const CreateProjectPage = () => {
               onChange={(e) => setDescription(e.target.value)}
               placeholder="Describe your project, its goals, and what you are building..."
               rows={5}
-              className="mt-2 w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-white placeholder:text-white/40 outline-none transition focus:border-emerald-400/50 focus:bg-white/10"
+              className="mt-2 w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-white placeholder:text-white/40 outline-none transition focus:border-orange-500/50 focus:bg-white/10"
               maxLength={500}
               required
             />
@@ -184,7 +184,7 @@ const CreateProjectPage = () => {
                     onClick={() => toggleTech(tech)}
                     className={`flex items-center gap-2 rounded-full border px-4 py-2 text-sm transition ${
                       isSelected
-                        ? "border-emerald-400/50 bg-emerald-400/10 text-emerald-400"
+                        ? "border-orange-500/50 bg-orange-500/10 text-orange-500"
                         : "border-white/15 bg-white/5 text-white/70 hover:border-white/30 hover:bg-white/10"
                     }`}
                   >
@@ -195,7 +195,7 @@ const CreateProjectPage = () => {
               })}
             </div>
             {selectedTech.length > 0 && (
-              <p className="mt-2 text-xs text-emerald-400">
+              <p className="mt-2 text-xs text-orange-500">
                 {selectedTech.length} {selectedTech.length === 1 ? "technology" : "technologies"} selected
               </p>
             )}
@@ -212,7 +212,7 @@ const CreateProjectPage = () => {
               onChange={(e) =>
                 setStatus(e.target.value as "recruiting" | "active" | "completed")
               }
-              className="mt-2 w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-white outline-none transition focus:border-emerald-400/50 focus:bg-white/10"
+              className="mt-2 w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-white outline-none transition focus:border-orange-500/50 focus:bg-white/10"
             >
               <option value="recruiting">Recruiting - Looking for members</option>
               <option value="active">Active - Currently building</option>
@@ -225,7 +225,7 @@ const CreateProjectPage = () => {
             <p className="text-sm text-white/60">
               <strong className="text-white/80">Project Owner:</strong> {user.name}
               {user.role === "admin" && (
-                <span className="ml-2 rounded-full border border-emerald-400/30 bg-emerald-400/10 px-2 py-0.5 text-xs text-emerald-400">
+                <span className="ml-2 rounded-full border border-orange-500/30 bg-orange-500/10 px-2 py-0.5 text-xs text-orange-500">
                   Admin
                 </span>
               )}

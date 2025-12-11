@@ -84,7 +84,7 @@ export const LoginModal = ({ open, onClose }: ModalProps) => {
 
             <div className="mt-6 rounded-3xl border border-white/10 bg-white/5 p-5">
               <div className="flex items-center gap-3 text-sm text-white/70">
-                <Shield className="h-4 w-4 text-emerald-300" />
+                <Shield className="h-4 w-4 text-orange-400" />
                 Username + password stored securely in the club vault.
               </div>
             </div>
@@ -103,7 +103,7 @@ export const LoginModal = ({ open, onClose }: ModalProps) => {
                       />
                     </div>
                   ) : (
-                    <div className="flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-br from-emerald-400 to-cyan-400 text-lg font-semibold text-black">
+                    <div className="flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-br from-orange-500 to-orange-400 text-lg font-semibold text-black">
                       {user.name.charAt(0).toUpperCase()}
                     </div>
                   )}
@@ -111,7 +111,7 @@ export const LoginModal = ({ open, onClose }: ModalProps) => {
                     <p className="text-base font-semibold">{user.name}</p>
                     <p className="text-sm text-white/60">{user.email}</p>
                   </div>
-                  <div className="ml-auto text-right text-xs text-emerald-300">
+                  <div className="ml-auto text-right text-xs text-orange-400">
                     <p>{user.points} pts</p>
                     <p>{user.badges} badges</p>
                   </div>
@@ -178,7 +178,7 @@ export const LoginModal = ({ open, onClose }: ModalProps) => {
                 {message && (
                   <p
                     className={`text-sm ${
-                      status === "success" ? "text-emerald-300" : "text-red-400"
+                      status === "success" ? "text-orange-400" : "text-red-400"
                     }`}
                   >
                     {message}
@@ -186,7 +186,7 @@ export const LoginModal = ({ open, onClose }: ModalProps) => {
                 )}
                 {/* Small top-right toast for success to improve UX */}
                 {showToast && status === "success" && (
-                  <div className="fixed right-6 top-6 z-50 rounded-full bg-emerald-900/80 px-4 py-2 text-sm text-emerald-200">
+                  <div className="fixed right-6 top-6 z-50 rounded-full bg-emerald-900/80 px-4 py-2 text-sm text-orange-300">
                     {message}
                   </div>
                 )}
@@ -195,12 +195,12 @@ export const LoginModal = ({ open, onClose }: ModalProps) => {
 
             {user ? (
               <p className="mt-4 flex items-center gap-2 text-xs text-white/60">
-                <CheckCircle2 className="h-4 w-4 text-emerald-300" />
+                <CheckCircle2 className="h-4 w-4 text-orange-400" />
                 Session is stored locally. Use logout when you are done.
               </p>
             ) : (
               <p className="mt-4 flex items-center gap-2 text-xs text-white/60">
-                <CheckCircle2 className="h-4 w-4 text-emerald-300" />
+                <CheckCircle2 className="h-4 w-4 text-orange-400" />
                 Password-only preview – replace with your backend when ready.
               </p>
             )}

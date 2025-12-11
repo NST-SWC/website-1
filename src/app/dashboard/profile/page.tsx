@@ -276,7 +276,7 @@ export default function ProfilePage() {
     return (
       <PageContainer>
         <div className="text-center py-12">
-          <div className="inline-block h-8 w-8 animate-spin rounded-full border-4 border-solid border-emerald-400 border-r-transparent"></div>
+          <div className="inline-block h-8 w-8 animate-spin rounded-full border-4 border-solid border-orange-500 border-r-transparent"></div>
           <p className="mt-4 text-white/60">Loading profile...</p>
         </div>
       </PageContainer>
@@ -290,7 +290,7 @@ export default function ProfilePage() {
           <h1 className="text-2xl font-semibold">Profile not found</h1>
           <button
             onClick={() => router.push("/dashboard")}
-            className="mt-4 text-emerald-400 hover:underline"
+            className="mt-4 text-orange-500 hover:underline"
           >
             ← Back to dashboard
           </button>
@@ -321,7 +321,7 @@ export default function ProfilePage() {
                     className="h-24 w-24 rounded-full object-cover"
                   />
                 ) : (
-                  <div className="h-24 w-24 rounded-full bg-gradient-to-br from-emerald-400 to-sky-500 flex items-center justify-center text-3xl font-bold text-black">
+                  <div className="h-24 w-24 rounded-full bg-gradient-to-br from-orange-500 to-orange-600 flex items-center justify-center text-3xl font-bold text-black">
                     {profile.name?.charAt(0).toUpperCase() || "U"}
                   </div>
                 )}
@@ -337,7 +337,7 @@ export default function ProfilePage() {
                     <button
                       onClick={handleAvatarClick}
                       disabled={uploadingAvatar}
-                      className="absolute bottom-0 right-0 rounded-full bg-emerald-400 p-2 text-black transition hover:bg-emerald-500 disabled:opacity-50"
+                      className="absolute bottom-0 right-0 rounded-full bg-orange-500 p-2 text-black transition hover:bg-orange-600 disabled:opacity-50"
                       title="Upload avatar"
                     >
                       {uploadingAvatar ? (
@@ -355,7 +355,7 @@ export default function ProfilePage() {
                     <h2 className="text-2xl font-semibold">{profile.name}</h2>
                     <p className="text-sm text-white/60 capitalize">{profile.role}</p>
                     {isEditing && (
-                      <p className="mt-2 text-xs text-emerald-400">
+                      <p className="mt-2 text-xs text-orange-500">
                         💡 Click the camera icon to upload your profile picture (max 2MB)
                       </p>
                     )}
@@ -380,7 +380,7 @@ export default function ProfilePage() {
                       <button
                         onClick={handleSave}
                         disabled={saving}
-                        className="flex items-center gap-2 rounded-full bg-gradient-to-r from-emerald-400 to-emerald-500 px-4 py-2 text-sm font-medium text-black transition hover:opacity-90 disabled:opacity-50"
+                        className="flex items-center gap-2 rounded-full bg-gradient-to-r from-orange-500 to-orange-600 px-4 py-2 text-sm font-medium text-black transition hover:opacity-90 disabled:opacity-50"
                       >
                         <Save className="h-4 w-4" />
                         {saving ? "Saving..." : "Save"}
@@ -395,7 +395,7 @@ export default function ProfilePage() {
           {/* Personal Information */}
           <section className="rounded-3xl border border-white/10 bg-black/40 p-6">
             <div className="mb-4 flex items-center gap-3">
-              <User className="h-5 w-5 text-emerald-400" />
+              <User className="h-5 w-5 text-orange-500" />
               <h3 className="text-xl font-semibold">Personal Information</h3>
             </div>
 
@@ -409,7 +409,7 @@ export default function ProfilePage() {
                     onChange={(e) =>
                       setEditedProfile({ ...editedProfile!, name: e.target.value })
                     }
-                    className="w-full rounded-xl border border-white/10 bg-white/5 px-4 py-2 text-white outline-none transition focus:border-emerald-400/50 disabled:opacity-50"
+                    className="w-full rounded-xl border border-white/10 bg-white/5 px-4 py-2 text-white outline-none transition focus:border-orange-500/50 disabled:opacity-50"
                     disabled={!isEditing}
                   />
                 </div>
@@ -421,7 +421,7 @@ export default function ProfilePage() {
                     onChange={(e) =>
                       setEditedProfile({ ...editedProfile!, email: e.target.value })
                     }
-                    className="w-full rounded-xl border border-white/10 bg-white/5 px-4 py-2 text-white outline-none transition focus:border-emerald-400/50 disabled:opacity-50"
+                    className="w-full rounded-xl border border-white/10 bg-white/5 px-4 py-2 text-white outline-none transition focus:border-orange-500/50 disabled:opacity-50"
                     disabled={!isEditing}
                   />
                 </div>
@@ -437,7 +437,7 @@ export default function ProfilePage() {
                       setEditedProfile({ ...editedProfile!, phone: e.target.value })
                     }
                     placeholder="+1 (555) 000-0000"
-                    className="w-full rounded-xl border border-white/10 bg-white/5 px-4 py-2 text-white outline-none transition focus:border-emerald-400/50 disabled:opacity-50"
+                    className="w-full rounded-xl border border-white/10 bg-white/5 px-4 py-2 text-white outline-none transition focus:border-orange-500/50 disabled:opacity-50"
                     disabled={!isEditing}
                   />
                 </div>
@@ -448,7 +448,7 @@ export default function ProfilePage() {
                     onChange={(e) =>
                       setEditedProfile({ ...editedProfile!, experience: e.target.value })
                     }
-                    className="w-full rounded-xl border border-white/10 bg-white/5 px-4 py-2 text-white outline-none transition focus:border-emerald-400/50 disabled:opacity-50"
+                    className="w-full rounded-xl border border-white/10 bg-white/5 px-4 py-2 text-white outline-none transition focus:border-orange-500/50 disabled:opacity-50"
                     disabled={!isEditing}
                   >
                     <option value="beginner">Beginner</option>
@@ -467,7 +467,7 @@ export default function ProfilePage() {
                   }
                   rows={3}
                   placeholder="Tell us about yourself..."
-                  className="w-full rounded-xl border border-white/10 bg-white/5 px-4 py-2 text-white outline-none transition focus:border-emerald-400/50 disabled:opacity-50"
+                  className="w-full rounded-xl border border-white/10 bg-white/5 px-4 py-2 text-white outline-none transition focus:border-orange-500/50 disabled:opacity-50"
                   disabled={!isEditing}
                 />
               </div>
@@ -477,7 +477,7 @@ export default function ProfilePage() {
           {/* Links */}
           <section className="rounded-3xl border border-white/10 bg-black/40 p-6">
             <div className="mb-4 flex items-center gap-3">
-              <Globe className="h-5 w-5 text-sky-400" />
+              <Globe className="h-5 w-5 text-orange-500" />
               <h3 className="text-xl font-semibold">Links & Social</h3>
             </div>
 
@@ -493,7 +493,7 @@ export default function ProfilePage() {
                       setEditedProfile({ ...editedProfile!, github: e.target.value })
                     }
                     placeholder="username"
-                    className="flex-1 rounded-xl border border-white/10 bg-white/5 px-4 py-2 text-white outline-none transition focus:border-emerald-400/50 disabled:opacity-50"
+                    className="flex-1 rounded-xl border border-white/10 bg-white/5 px-4 py-2 text-white outline-none transition focus:border-orange-500/50 disabled:opacity-50"
                     disabled={!isEditing}
                   />
                 </div>
@@ -510,7 +510,7 @@ export default function ProfilePage() {
                       setEditedProfile({ ...editedProfile!, portfolio: e.target.value })
                     }
                     placeholder="https://your-portfolio.com"
-                    className="flex-1 rounded-xl border border-white/10 bg-white/5 px-4 py-2 text-white outline-none transition focus:border-emerald-400/50 disabled:opacity-50"
+                    className="flex-1 rounded-xl border border-white/10 bg-white/5 px-4 py-2 text-white outline-none transition focus:border-orange-500/50 disabled:opacity-50"
                     disabled={!isEditing}
                   />
                 </div>
@@ -549,7 +549,7 @@ export default function ProfilePage() {
                 <input
                   type="text"
                   placeholder="Add a skill (press Enter)"
-                  className="flex-1 rounded-xl border border-white/10 bg-white/5 px-4 py-2 text-white outline-none transition focus:border-emerald-400/50"
+                  className="flex-1 rounded-xl border border-white/10 bg-white/5 px-4 py-2 text-white outline-none transition focus:border-orange-500/50"
                   onKeyDown={(e) => {
                     if (e.key === "Enter") {
                       addSkill(e.currentTarget.value);
@@ -566,13 +566,13 @@ export default function ProfilePage() {
         <aside className="space-y-6">
           {/* Stats */}
           <div className="rounded-3xl border border-white/10 bg-black/40 p-6">
-            <h3 className="mb-4 text-sm uppercase tracking-[0.3em] text-emerald-200">
+            <h3 className="mb-4 text-sm uppercase tracking-[0.3em] text-orange-300">
               Your Stats
             </h3>
             <div className="space-y-4">
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-2">
-                  <TrendingUp className="h-4 w-4 text-emerald-400" />
+                  <TrendingUp className="h-4 w-4 text-orange-500" />
                   <span className="text-sm text-white/60">Points</span>
                 </div>
                 <span className="text-2xl font-semibold">{profile.points || 0}</span>
@@ -586,7 +586,7 @@ export default function ProfilePage() {
               </div>
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-2">
-                  <Settings className="h-4 w-4 text-sky-400" />
+                  <Settings className="h-4 w-4 text-orange-500" />
                   <span className="text-sm text-white/60">Projects</span>
                 </div>
                 <span className="text-2xl font-semibold">
@@ -598,7 +598,7 @@ export default function ProfilePage() {
 
           {/* Quick Actions */}
           <div className="rounded-3xl border border-white/10 bg-black/40 p-6">
-            <h3 className="mb-4 text-sm uppercase tracking-[0.3em] text-emerald-200">
+            <h3 className="mb-4 text-sm uppercase tracking-[0.3em] text-orange-300">
               Quick Actions
             </h3>
             <div className="space-y-2">
@@ -625,7 +625,7 @@ export default function ProfilePage() {
 
           {/* Account */}
           <div className="rounded-3xl border border-white/10 bg-black/40 p-6">
-            <h3 className="mb-4 text-sm uppercase tracking-[0.3em] text-emerald-200">
+            <h3 className="mb-4 text-sm uppercase tracking-[0.3em] text-orange-300">
               Account
             </h3>
             <div className="space-y-2">

@@ -290,13 +290,13 @@ export default function NotificationBell({
   };
 
   const baseButtonClasses =
-    "relative flex items-center gap-2 rounded-full px-4 py-2 text-sm font-medium transition focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400/80 focus-visible:ring-offset-2 focus-visible:ring-offset-black";
+    "relative flex items-center gap-2 rounded-full px-4 py-2 text-sm font-medium transition focus:outline-none focus-visible:ring-2 focus-visible:ring-orange-400/80 focus-visible:ring-offset-2 focus-visible:ring-offset-black";
   const variantClasses =
     buttonVariant === "icon"
-      ? "h-11 w-11 justify-center rounded-full border border-white/15 bg-white/10 text-white hover:border-cyan-400/40"
+      ? "h-11 w-11 justify-center rounded-full border border-white/15 bg-white/10 text-white hover:border-orange-400/40"
       : buttonVariant === "ghost"
-        ? "border border-white/15 bg-white/5 text-white hover:border-cyan-400/40"
-        : "bg-gradient-to-r from-cyan-400 via-blue-500 to-indigo-500 text-black shadow-lg shadow-cyan-500/30 hover:shadow-cyan-400/40";
+        ? "border border-white/15 bg-white/5 text-white hover:border-orange-400/40"
+        : "bg-gradient-to-r from-orange-400 via-orange-600 to-red-600 text-black shadow-lg shadow-orange-500/30 hover:shadow-orange-400/40";
 
   const buttonClasses = cn(
     baseButtonClasses,
@@ -322,7 +322,7 @@ export default function NotificationBell({
           <span>{unreadCount > 0 ? `${unreadCount} new` : "Notifications"}</span>
         )}
         {unreadCount > 0 && (
-          <span className="absolute -right-0.5 -top-0.5 h-5 min-w-[1.25rem] rounded-full bg-white px-1 text-center text-[0.65rem] font-semibold text-black shadow-lg shadow-cyan-500/30">
+          <span className="absolute -right-0.5 -top-0.5 h-5 min-w-[1.25rem] rounded-full bg-white px-1 text-center text-[0.65rem] font-semibold text-black shadow-lg shadow-orange-500/30">
             {unreadCount > 9 ? "9+" : unreadCount}
           </span>
         )}
@@ -338,7 +338,7 @@ export default function NotificationBell({
             transition={{ duration: 0.18 }}
             ref={panelRef}
             className={cn(
-              "z-50 w-[360px] rounded-3xl border border-white/15 bg-[#050507]/95 p-4 text-white shadow-2xl shadow-cyan-500/10 backdrop-blur-xl",
+              "z-50 w-[360px] rounded-3xl border border-white/15 bg-[#050507]/95 p-4 text-white shadow-2xl shadow-orange-500/10 backdrop-blur-xl",
               isMobile
                 ? "fixed left-4 right-4 top-20 w-auto"
                 : "absolute right-0 mt-3",
@@ -385,7 +385,7 @@ export default function NotificationBell({
                   onClick={markAllRead}
                   disabled={unreadCount === 0 || marking}
                   className={cn(
-                    "flex items-center gap-1 rounded-full border border-white/10 px-3 py-1 text-xs font-semibold text-white/70 transition hover:border-cyan-400/60 hover:text-white",
+                    "flex items-center gap-1 rounded-full border border-white/10 px-3 py-1 text-xs font-semibold text-white/70 transition hover:border-orange-400/60 hover:text-white",
                     (unreadCount === 0 || marking) && "opacity-40",
                   )}
                 >
@@ -421,13 +421,13 @@ export default function NotificationBell({
                       "group flex w-full items-start gap-3 rounded-2xl border px-4 py-3 text-left transition",
                       notification.read
                         ? "border-white/5 bg-white/5 hover:border-white/20 hover:bg-white/10"
-                        : "border-cyan-400/40 bg-gradient-to-r from-cyan-500/15 to-transparent text-white shadow-lg shadow-cyan-500/20 hover:border-cyan-300/60",
+                        : "border-orange-400/40 bg-gradient-to-r from-orange-500/15 to-transparent text-white shadow-lg shadow-orange-500/20 hover:border-orange-300/60",
                     )}
                   >
                     <div
                       className={cn(
                         "mt-1 h-2.5 w-2.5 rounded-full",
-                        notification.read ? "bg-white/30" : "bg-cyan-300",
+                        notification.read ? "bg-white/30" : "bg-orange-300",
                       )}
                     />
                     <div className="flex-1">

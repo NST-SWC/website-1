@@ -62,7 +62,7 @@ const ProjectUpdateForm = ({ projectId, defaultText, canEdit }: ProjectUpdateFor
             value={draft}
             onChange={(e) => setDraft(e.target.value)}
             placeholder="Share a quick squad update..."
-            className="w-full rounded-2xl border border-white/15 bg-black/40 px-4 py-3 text-sm text-white outline-none transition focus:border-emerald-300/50"
+            className="w-full rounded-2xl border border-white/15 bg-black/40 px-4 py-3 text-sm text-white outline-none transition focus:border-orange-400/50"
             rows={3}
             disabled={isPending}
           />
@@ -79,7 +79,7 @@ const ProjectUpdateForm = ({ projectId, defaultText, canEdit }: ProjectUpdateFor
           {message && (
             <p
               className={`text-xs ${
-                status === "success" ? "text-emerald-300" : "text-red-300"
+                status === "success" ? "text-orange-400" : "text-red-300"
               }`}
             >
               {message}

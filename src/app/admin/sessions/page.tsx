@@ -270,7 +270,7 @@ export default function SessionsManagePage() {
                           <ul className="space-y-1 text-sm text-white/60">
                             {session.topics.map((topic, idx) => (
                               <li key={idx} className="flex items-start gap-2">
-                                <span className="text-cyan-400">•</span>
+                                <span className="text-orange-400">•</span>
                                 {topic}
                               </li>
                             ))}
@@ -314,7 +314,7 @@ export default function SessionsManagePage() {
                         </div>
                         <button
                           onClick={() => handleOpenModal(session)}
-                          className="rounded-full border border-white/10 px-3 py-1 text-xs font-semibold text-white/70 transition hover:border-cyan-400/60 hover:text-white"
+                          className="rounded-full border border-white/10 px-3 py-1 text-xs font-semibold text-white/70 transition hover:border-orange-400/60 hover:text-white"
                         >
                           Reschedule
                         </button>
