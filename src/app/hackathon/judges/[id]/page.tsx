@@ -39,6 +39,13 @@ async function getJudgeData(id: string): Promise<JudgeData | null> {
   }
 }
 
+export async function generateStaticParams() {
+  // Pre-generate the known judge verification pages
+  return [
+    { id: 'NST-DEVFORGE-JUDGE-2025-001' },
+  ];
+}
+
 export async function generateMetadata({ params }: { params: Promise<{ id: string }> }): Promise<Metadata> {
   const { id } = await params;
   const judge = await getJudgeData(id);
